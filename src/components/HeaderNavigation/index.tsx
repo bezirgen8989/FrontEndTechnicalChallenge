@@ -3,7 +3,7 @@ import styles from "./style.module.scss";
 import { useRouter } from "next/router";
 
 type HeaderNavigation = {
-  headerNavigators?: unknown[];
+  headerNavigators?: any[];
 };
 
 export const HeaderNavigation = ({ headerNavigators }: HeaderNavigation) => {
