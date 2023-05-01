@@ -1,0 +1,87 @@
+@import "../../styles/variables.scss";
+
+.switch {
+  position: relative;
+  display: inline-block;
+  height: 40px;
+  width: 100%;
+  border: 1px solid #F3F4F9;
+  border-radius: 32px;
+  z-index: 10;
+  cursor: pointer;
+
+  &>input.switchInput {
+    border: 1px solid #5AB0DB;
+  }
+
+  &>.switchTexts {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    position: absolute;
+    width: 100%;
+    height: 2.4rem;
+    background: transparent;
+    z-index: 1;
+
+    &>.switchItem {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 1.9rem;
+
+      &>.text {
+        padding-left: 0.5rem;
+        font-family: $inter-600;
+        font-size: 14px;
+        color: $button-default-color;
+      }
+    }
+  }
+}
+
+.switchInput {
+  opacity: 0;
+  width: 100%;
+  position: absolute;
+  bottom: 50px;
+}
+
+.switchLabel {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #000000;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+.switchInput:checked+.switchLabel {
+  background-color: #007bff;
+}
+
+.switchSlider {
+  background-color: #F3F4F9;
+  ;
+  cursor: pointer;
+  border-radius: 1.25rem;
+  height: 1.85rem;
+  width: 52%;
+  position: absolute;
+  top: 50%;
+  transform: translate(0%, -50%);
+  transition: all 0.2s ease-in-out;
+  z-index: 0;
+  left: 0.2rem;
+}
+
+.switchInput:checked+.switchSlider {
+  left: 47%;
+
+}

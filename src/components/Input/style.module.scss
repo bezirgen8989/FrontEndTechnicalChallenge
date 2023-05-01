@@ -1,0 +1,32 @@
+@import "../../styles/variables.scss";
+
+.inputContainer{
+    & > label {
+        font-family: "Inter-SemiBold";
+        color: $main-text;
+        padding-bottom: 0.5rem;
+        margin: 0;
+    }
+    & > div {
+        width: 100%;
+        position: relative;
+        & > .iconInto{
+            position: absolute;
+            top: 0.61rem;
+            right: 0;
+            cursor: pointer;
+        }
+
+        & > input {
+            all: unset;
+            background-color: #f2f2f2; 
+            height: 40px;
+            padding: 0 10px; 
+            border: none; 
+            border-radius: 8px;
+            width: 100%;
+        }
+    }
+    
+    
+}

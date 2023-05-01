@@ -1,0 +1,39 @@
+@import "../../styles/variables.scss";
+
+.customButtonBlue {
+    border: none;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    overflow: visible;
+    background: $button-default-color;
+    color: $white-color;
+    font-family: $inter-600;
+    height: 52px;
+    font-size: 14px;
+    border-radius: 8px;
+    line-height: normal;
+    -webkit-font-smoothing: inherit;
+    -moz-osx-font-smoothing: inherit;
+    outline: none;
+    cursor: pointer;
+}
+
+.customButtonGray{
+    border: none;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    overflow: visible;
+    background: $button-gray-color;
+    color: $description-text-color;
+    font-family: $inter-600;
+    height: 52px;
+    font-size: 14px;
+    border-radius: 8px;
+    line-height: normal;
+    -webkit-font-smoothing: inherit;
+    -moz-osx-font-smoothing: inherit;
+    outline: none;
+    cursor: pointer;
+}

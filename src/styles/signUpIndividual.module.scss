@@ -1,0 +1,154 @@
+@import "./variables.scss";
+
+.signUpIndividualContainer {
+  display: flex;
+  height: 100vh;
+
+  &>.formContainer {
+    position: relative;
+    width: 50%;
+    height: 100%;
+    @media(min-width: 300px) and (max-width: 767px) and (orientation: portrait) {
+      width: 100%;
+    }
+    & > .formContainerBlock{
+      height: 100%;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      &>.formBlock {
+        width: 100%;
+        height: 75vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        @media(min-width: 300px) and (max-width: 767px) and (orientation: portrait) {
+          justify-content: flex-start;
+          overflow: auto;
+          height: 100%;
+        }
+        &>.formHeaderText {
+          width: 45%;
+          padding-bottom: 2rem;
+          @media(min-width: 300px) and (max-width: 767px) and (orientation: portrait) {
+            width: 100%;
+            text-align: center;
+            padding-top: 50px;
+          }
+          @media(max-width: 1024px) and (orientation: portrait),
+          (max-width: 1279px) and (orientation: landscape) {
+            width: 100%;
+            text-align: center;
+          }
+        }
+  
+        &>.validationMessage {
+          padding-top: 2rem;
+          height: 20px;
+          color: rgb(218, 147, 147);
+        }
+  
+        &>form {
+          width: 45%;
+          @media(min-width: 300px) and (max-width: 767px) and (orientation: portrait) {
+            width: 80%;
+            text-align: center;
+          }
+          @media(max-width: 1024px) and (orientation: portrait),
+          (max-width: 1279px) and (orientation: landscape) {
+            width: 75%;
+            text-align: center;
+          }
+          &>div {
+            padding-bottom: 1.2rem;
+          }
+  
+          &>.checkboxContainer {
+            display: flex;
+            width: auto;
+  
+            &>input[type="checkbox"] {
+              -webkit-appearance: none;
+              -moz-appearance: none;
+              appearance: none;
+              width: 24px;
+              height: 24px;
+              border: 1px solid $description-text-color;
+              border-radius: 4px;
+              outline: none;
+              cursor: pointer;
+  
+              &:checked {
+                background-color: $main-text;
+              }
+  
+              &::before {
+                content: "";
+                display: block;
+                width: 20px;
+                height: 24px;
+                border: solid #ffffff;
+                border-width: 0 3px 3px 0;
+                transform: rotate(45deg) scale(0.6);
+                margin: -4px 0 0 0;
+                opacity: 0;
+                transition: opacity 0.2s ease-in-out;
+              }
+  
+              &:checked::before {
+                opacity: 1;
+              }
+            }
+  
+            &>.agreementCheckbox {
+              content: "\2713";
+              margin-right: 20px;
+            }
+  
+            &>label {
+              font-family: $inter-400;
+              font-size: 14px;
+              line-height: 170%;
+              color: $description-text-color;
+              margin-top: -4px;
+            }
+          }
+  
+          &>.doubleInput {
+            &>input {
+              width: 50% !important;
+            }
+  
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            grid-template-rows: 1fr;
+            grid-column-gap: 30px;
+            grid-row-gap: 0px;
+          }
+        }
+  
+        
+      }
+    }
+    
+  }
+  & > .rightSideBlock{
+    background: $linear-gradient;
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-left: 50px;
+    @media(min-width: 300px) and (max-width: 767px) and (orientation: portrait) {
+      display: none;
+    }
+    @media(max-width: 1024px) and (orientation: portrait),
+    (max-width: 1279px) and (orientation: landscape) {
+      img {
+        width: 160% !important;
+      }
+    }
+  }
+}

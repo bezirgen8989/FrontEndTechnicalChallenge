@@ -1,0 +1,75 @@
+@import "./variables.scss";
+
+.selectRoleContainer {
+  display: flex;
+  height: 100vh;
+  
+  .rolesContainer {
+    display: flex;
+    flex-direction: column;
+    background: $white-color;
+    height: 100%;
+    width: 50%;
+    @media(min-width: 374px) and (max-width: 767px) and (orientation: portrait) {
+      width: 100%;
+    }
+
+    .rolesBlok {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 87%;
+      width: 100%;
+      text-align: left;
+      & > div {
+        width: 30vw;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        @media(max-width: 1024px) and (orientation: portrait),
+        (max-width: 1279px) and (orientation: landscape) {
+          width: 40vw;
+        }
+        
+        @media(min-width: 1960px) {
+          width: 17vw;
+        }
+      }
+      & > div > .rolesItemsContainer{
+        // width: 40%;
+        &>p {
+          padding-top: 1.8rem;
+          font-family: "Inter-SemiBold";
+          font-size: 15px;
+          line-height: 18px;
+        }
+      }
+      @media(min-width: 374px) and (max-width: 767px) and (orientation: portrait) {
+        & > div {
+          width: 90%;
+        }
+      }
+      .rolesBlokDescription {
+        padding-bottom: 2rem;
+      }
+
+      
+    }
+  }
+  & > .rightSideBlock{
+    height: 100%;
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    @media(min-width: 300px) and (max-width: 767px) and (orientation: portrait) {
+      display: none;
+    }
+  }
+}
+
+.imageContainerDescription {
+  padding-left: 6.5625rem;
+}

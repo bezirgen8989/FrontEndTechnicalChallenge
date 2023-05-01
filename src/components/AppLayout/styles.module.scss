@@ -1,0 +1,274 @@
+@import "../../styles/variables.scss";
+
+.appContainer {
+  background-color: #F3F4F9;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  position: relative;
+
+  &>.appContainerNav {
+
+    @media(max-width: 1024px) and (orientation: portrait),
+    (max-width: 1279px) and (orientation: landscape) {
+      position: absolute;
+      height: 100%;
+      left: -30%;
+      transition: 0.5s ease;
+      z-index: 1;
+      width: 33%;
+    }
+
+    @media(min-width: 374px) and (max-width: 767px) and (orientation: portrait) {
+      left: -30%;
+      width: 98%;
+    }
+
+    width: 25%;
+    background-color: #FFFFFF;
+    height: 100%;
+    filter: drop-shadow(0px 8px 48px rgba(25, 16, 73, 0.08));
+
+    &>.navigationContainer {
+      @media(min-width: 374px) and (max-width: 767px) and (orientation: portrait) {
+        padding-top: 30px;
+      }
+
+      display: flex;
+      flex-direction: column;
+      padding-top: 85px;
+      padding-left: 28px;
+
+      &>.activeLink {
+        background: linear-gradient(267.08deg, #2B3E9B -4.96%, #1E328E 100%);
+        border-radius: 6px;
+        align-items: center;
+
+        &>a {
+          color: #FFFFFF;
+        }
+
+        &>.iconContainer {
+          &>div {
+            &>svg {
+              path {
+                fill: #FFFFFF;
+                fill-opacity: 1;
+              }
+
+            }
+          }
+        }
+      }
+
+      &>.navigationLink {
+        width: 90%;
+        height: 48px;
+        align-items: center;
+        padding: 1rem;
+
+        &>.iconContainer {
+          padding-right: 22px;
+        }
+
+        &>a {
+          text-decoration: none;
+
+          &:hover {
+            background-color: transparent;
+          }
+        }
+
+        display: flex;
+        flex-direction: row;
+        margin-bottom: 1.6rem;
+
+        @media(min-width: 374px) and (max-width: 767px) and (orientation: portrait) {
+          margin-bottom: 1rem;
+        }
+      }
+    }
+
+    &>.userSettings {
+      @media(min-width: 374px) and (max-width: 767px) and (orientation: portrait) {
+        width: 83%;
+      }
+
+      left: 32px;
+      width: calc(100% - 5vw);
+      position: absolute;
+      bottom: 32px;
+
+      &>.userData {
+        display: flex;
+        justify-content: space-evenly;
+        padding-bottom: 1.8rem;
+
+        &>.userImage {
+          padding-right: 0.6rem;
+        }
+
+        &>.userInfo {
+          display: flex;
+          justify-content: space-between;
+          width: 100%;
+
+          &>.info {
+            &>p {
+              margin: 0;
+              padding: 0;
+              padding-bottom: 5px;
+
+              &:first-child {
+                color: $main-text;
+                font-family: $inter-600;
+                font-size: 14px;
+                line-height: 17px;
+              }
+
+              &:last-child {
+                font-family: $inter-400;
+                font-size: 12px;
+                line-height: 15px;
+              }
+            }
+          }
+
+          &>.logout {
+            cursor: pointer;
+          }
+        }
+      }
+    }
+
+    &>.navMenuMobile {
+      display: none;
+
+      @media (max-width: 1024px) and (orientation: portrait),
+      (max-width: 1279px) and (orientation: landscape) {
+        display: block;
+        position: absolute;
+        top: 45%;
+        right: -15%;
+        border-top-right-radius: 8px;
+        border-bottom-right-radius: 8px;
+      }
+
+      @media(min-width: 374px) and (max-width: 767px) and (orientation: portrait) {
+        top: 10px;
+        right: 17px;
+      }
+    }
+  }
+
+  &>.section {
+    width: 100%;
+    overflow: hidden;
+
+    &>.header {
+      display: flex;
+      margin: 26px;
+      justify-content: space-between;
+      align-items: center;
+
+      &>.searchInput {
+        position: relative;
+        width: 12%;
+
+        @media(max-width: 1024px) and (orientation: portrait),
+        (max-width: 1279px) and (orientation: landscape) {
+          width: 30%;
+        }
+
+        &>input {
+          border-radius: 8px;
+          border: 1px solid #B9BFD9;
+          height: 51px;
+          background: none;
+          text-indent: 35px;
+          width: 100%;
+          @media(min-width: 374px) and (max-width: 767px) and (orientation: portrait) {
+            width: 50px;
+            border-radius: 50%;
+          }
+
+          &:focus {
+            outline: none;
+
+            @media(min-width: 374px) and (max-width: 767px) and (orientation: portrait) {
+              width: 100%;
+              border-radius: 8px;
+            }
+          }
+
+          &::placeholder {
+            text-indent: 35px;
+            @media(min-width: 374px) and (max-width: 767px) and (orientation: portrait) {
+              color: transparent;
+            }
+           
+          }
+        }
+
+        &>i {
+          position: absolute;
+          left: 10px;
+          bottom: 30%;
+          @media(min-width: 374px) and (max-width: 767px) and (orientation: portrait) {
+            left: 8.5%;
+            bottom: 30%;
+          }
+        }
+
+      }
+
+      &>.navigationContainer {
+        &>.navigationBlock {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+
+          &>.icon {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #FFFFFF;
+            width: 52px;
+            height: 52px;
+            border-radius: 50%;
+          }
+
+          &>.breadCrumbs {
+            display: flex;
+            flex-direction: column;
+            padding-left: 15px;
+            padding-top: 5px;
+
+            &>h2 {
+              font-family: $inter-600;
+              font-size: 20px;
+              line-height: 24px;
+              color: $main-text;
+              margin-bottom: 0;
+            }
+          }
+        }
+      }
+    }
+
+    &>.childrenContent {
+      display: flex;
+      margin: 1.4rem;
+      height: 80%;
+      overflow: hidden;
+
+      @media(min-width: 374px) and (max-width: 767px) and (orientation: portrait) {
+        overflow: auto;
+        height: 100%;
+        margin: 0.7rem;
+        margin-top: 1rem;
+
+      }
+    }
+  }
+}

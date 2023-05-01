@@ -1,0 +1,44 @@
+@import "../../styles/variables.scss";
+
+.cardContainer {
+	display: flex;
+	flex-direction: row;
+	border: 1px solid rgba(131, 138, 169, 0.5);
+	border-radius: 8px;
+	margin-bottom: 20px;
+	justify-content: center;
+	align-items: flex-start;
+	width: 100%;
+	padding-top: 25px;
+	padding-bottom: 10px;
+	padding-left: 33px;
+	padding-right: 45px;
+	.cardIconContainer{
+		display: flex;
+		justify-content: left;
+		align-items: flex-start;
+		width: 20%;
+	}
+	.cardInfoContainer{
+		width: 80%;
+		padding-left: 10px;
+		& > h1{
+			font-family: 'Inter-SemiBold';
+			font-size: 16px;
+			color: $main-text;
+		}
+		&> p {
+			font-family: 'Inter-Regular';
+			color: $description-text-color;
+			font-size: 14px;
+			width: 100%;
+			line-height: 24px;
+			font-style: normal;
+		}
+	}
+}
+.activeCardContainer{
+	background: $active-item-color;
+}
+
+
