@@ -14,8 +14,6 @@ type ContentProps = {
 const Content = () => {
   const router = useRouter();
   const headerCurrentLink = router.query.contentName as unknown as number;
-  console.log(router.query.contentName);
-  console.log(headerCurrentLink);
 
   const { discoverWeb3HeaderNavigators, discoverWeb3LinksContent } =
     useContext(AppContext);
@@ -25,8 +23,6 @@ const Content = () => {
   const selectedLinkContentData = discoverWeb3LinksContent.find(
     (item) => item.id === router.query.contentName
   );
-
-  console.log(selectedLinkContentData);
 
   return (
     <>

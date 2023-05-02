@@ -7,6 +7,7 @@ const basePath = `/${repo}`
 
 const nextConfig = {
   reactStrictMode: true,
+  exportTrailingSlash: true,
   images: {
     loader: 'akamai',
     path: '/FrontEndTechnicalChallenge', 
