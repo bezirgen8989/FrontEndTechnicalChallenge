@@ -10,15 +10,15 @@ type ContentProps = {
   headerCurrentLink: string;
 };
 
-export const getServerSideProps = (context: {
-  query: { headerCurrentLink: string };
-}) => {
-  return {
-    props: {
-      headerCurrentLink: context.query.headerCurrentLink,
-    },
-  };
-};
+// export const getServerSideProps = (context: {
+//   query: { headerCurrentLink: string };
+// }) => {
+//   return {
+//     props: {
+//       headerCurrentLink: context.query.headerCurrentLink,
+//     },
+//   };
+// };
 
 const Content = ({ headerCurrentLink }: ContentProps) => {
   const { discoverWeb3HeaderNavigators, discoverWeb3LinksContent } =
