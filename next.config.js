@@ -10,7 +10,7 @@ const nextConfig = {
   assetPrefix:"/FrontEndTechnicalChallenge/",
   reactStrictMode: true,
   publicRuntimeConfig: {
-    publicUrl: '/FrontEndTechnicalChallenge',
+    publicUrl: 'public/FrontEndTechnicalChallenge',
   },
   images: {
     loader: 'akamai',
