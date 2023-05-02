@@ -7,6 +7,7 @@ import { SvgIcon } from "@/components/SvgIcons";
 import Image from "next/image";
 import { Switch } from "@/components/Switch";
 import { AppContext } from "@/Context";
+import testUserAvatar from "../../assets/images/testImage.png";
 
 type AppLayoutProps = {
   children?: ReactElement;
