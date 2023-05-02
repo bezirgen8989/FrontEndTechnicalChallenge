@@ -125,7 +125,7 @@ export const AppLayout = ({ children }: AppLayoutProps) => {
           <div className={styles.userData}>
             <div className={styles.userImage}>
               <Image
-                src={"/assets/images/testImage.png"}
+                src={"../assets/images/testImage.png"}
                 alt={"userAva"}
                 width={35}
                 height={35}

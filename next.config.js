@@ -9,9 +9,6 @@ const nextConfig = {
   basePath: "/FrontEndTechnicalChallenge",
   assetPrefix:"/FrontEndTechnicalChallenge/",
   reactStrictMode: true,
-  publicRuntimeConfig: {
-    publicUrl: 'public/FrontEndTechnicalChallenge',
-  },
   images: {
     loader: 'akamai',
     path: '/FrontEndTechnicalChallenge', 

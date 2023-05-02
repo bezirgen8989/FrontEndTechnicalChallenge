@@ -127,7 +127,7 @@ const SignUpIndividual = ({}: SignInSignUpIndividual) => {
       </div>
       <div className={styles.rightSideBlock}>
         <RightSideBlock
-          imageSrc="/assets/images/signUpGeneralInfo.png"
+          imageSrc="../assets/images/signUpGeneralInfo.png"
           imageAlt="General Info Image"
           imageWidth={1031 * 2}
           imageHeight={675 * 2}

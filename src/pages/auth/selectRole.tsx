@@ -99,7 +99,7 @@ const SelectRole = () => {
         </div>
         <div className={styles.rightSideBlock}>
           <RightSideBlock
-            imageSrc="/assets/images/newGeneralInfoImage.png"
+            imageSrc="../assets/images/newGeneralInfoImage.png"
             imageAlt="General Info Image"
             imageWidth={1031 * 2}
             imageHeight={675 * 2}
