@@ -8,9 +8,19 @@ type HeaderNavigation = {
 
 export const HeaderNavigation = ({ headerNavigators }: HeaderNavigation) => {
   const router = useRouter();
+  const handleTouchStart = (e: React.TouchEvent) => {
+    e.stopPropagation();
+  };
 
+  const handleTouchEnd = (e: React.TouchEvent) => {
+    e.stopPropagation();
+  };
   return (
-    <div className={styles.navigationContainer}>
+    <div
+      className={styles.navigationContainer}
+      onTouchStart={handleTouchStart}
+      onTouchEnd={handleTouchEnd}
+    >
       <nav>
         {headerNavigators?.map((item) => (
           <Link
