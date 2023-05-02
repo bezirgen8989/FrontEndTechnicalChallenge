@@ -1,6 +1,6 @@
-import getConfig from "next/config";
 import Image from "next/image";
-const { publicRuntimeConfig } = getConfig();
+import headerLogoImage from "../../assets/images/Logo.svg";
+
 const Header = () => {
   return (
     <>
@@ -11,7 +11,7 @@ const Header = () => {
           }}
         >
           <Image
-            src={"../assets/images/Logo.svg"}
+            src={headerLogoImage}
             style={{
               width: "171px",
               height: "38px",
