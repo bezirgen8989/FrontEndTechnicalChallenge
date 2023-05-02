@@ -5,30 +5,39 @@ import { HeaderNavigation } from "@/components/HeaderNavigation";
 import { Key, useContext, useState } from "react";
 import { Button } from "@/components/Button";
 import { AppContext } from "@/Context";
+import { useRouter } from "next/router";
 
 type ContentProps = {
   headerCurrentLink: string;
 };
 
-// export const getServerSideProps = (context: {
-//   query: { headerCurrentLink: string };
-// }) => {
-//   return {
-//     props: {
-//       headerCurrentLink: context.query.headerCurrentLink,
-//     },
-//   };
-// };
+export const getServerSideProps = (context: {
+  query: { headerCurrentLink: string };
+}) => {
+  return {
+    props: {
+      headerCurrentLink: context.query.headerCurrentLink
+        ? context.query.headerCurrentLink
+        : "No data",
+    },
+  };
+};
 
 const Content = ({ headerCurrentLink }: ContentProps) => {
+  const router = useRouter();
+  console.log(router.query.contentName);
+  console.log(headerCurrentLink);
+
   const { discoverWeb3HeaderNavigators, discoverWeb3LinksContent } =
     useContext(AppContext);
   const [currentQuestion, setCurrentQuestion] = useState<number>(0);
   const [selectedAnswer, setSelectedAnswer] = useState<string>("");
 
   const selectedLinkContentData = discoverWeb3LinksContent.find(
-    (item) => item.id === headerCurrentLink
+    (item) => item.id === router.query.contentName
   );
+
+  console.log(selectedLinkContentData);
 
   return (
     <>
