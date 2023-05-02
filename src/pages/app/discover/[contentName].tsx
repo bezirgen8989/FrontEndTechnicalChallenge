@@ -11,18 +11,9 @@ type ContentProps = {
   headerCurrentLink: string;
 };
 
-export const getServerSideProps = (context: {
-  query: { headerCurrentLink: string };
-}) => {
-  return {
-    props: {
-      headerCurrentLink: context.query.headerCurrentLink,
-    },
-  };
-};
-
-const Content = ({ headerCurrentLink }: ContentProps) => {
+const Content = () => {
   const router = useRouter();
+  const headerCurrentLink = router.query.contentName as unknown as number;
   console.log(router.query.contentName);
   console.log(headerCurrentLink);
 
@@ -53,11 +44,11 @@ const Content = ({ headerCurrentLink }: ContentProps) => {
               <div className={styles.sectionBlocks}>
                 <div className={styles.header}>
                   <div className={styles.title}>
-                    {selectedLinkContentData.data.title}
+                    {selectedLinkContentData?.data.title}
                   </div>
                 </div>
 
-                {selectedLinkContentData.data.steps && (
+                {selectedLinkContentData?.data.steps && (
                   <div className={styles.dataContainer}>
                     <div className={styles.description}>
                       {selectedLinkContentData.data.description}
