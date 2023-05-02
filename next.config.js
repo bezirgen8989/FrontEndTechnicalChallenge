@@ -14,7 +14,7 @@ const nextConfig = {
   },
   images: {
     loader: 'akamai',
-    path: '', 
+    path: '/FrontEndTechnicalChallenge', 
     domains: ['https://bezirgen8989.github.io/FrontEndTechnicalChallenge/'],
     unoptimized: true
   },
