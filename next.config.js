@@ -5,6 +5,9 @@ const nextConfig = {
   publicRuntimeConfig: {
     publicUrl: '/public',
   },
+  images: {
+    unoptimized: true
+  },
   sassOptions:{
     includePaths: [path.join(__dirname, 'styles')],
   },
