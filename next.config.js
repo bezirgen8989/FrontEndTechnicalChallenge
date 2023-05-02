@@ -2,7 +2,9 @@
 const path = require('path')
 const nextConfig = {
   reactStrictMode: true,
-  
+  publicRuntimeConfig: {
+    publicUrl: '/public',
+  },
   images: {
     unoptimized: true
   },
