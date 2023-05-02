@@ -11,7 +11,7 @@ const Header = () => {
           }}
         >
           <Image
-            src={"/assets/images/Logo.svg"}
+            src={"../assets/images/Logo.svg"}
             style={{
               width: "171px",
               height: "38px",
