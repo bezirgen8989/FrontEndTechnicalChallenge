@@ -6,8 +6,8 @@ const assetPrefix = `/${repo}/`
 const basePath = `/${repo}`
 
 const nextConfig = {
-  basePath: "https://bezirgen8989.github.io/FrontEndTechnicalChallenge",
-  assetPrefix:"https://bezirgen8989.github.io/FrontEndTechnicalChallenge/",
+  basePath: "/FrontEndTechnicalChallenge",
+  assetPrefix:"/FrontEndTechnicalChallenge/",
   reactStrictMode: true,
   publicRuntimeConfig: {
     publicUrl: '/public',
