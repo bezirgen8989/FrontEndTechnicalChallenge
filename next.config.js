@@ -6,8 +6,6 @@ const assetPrefix = `/${repo}/`
 const basePath = `/${repo}`
 
 const nextConfig = {
-  basePath: "/FrontEndTechnicalChallenge",
-  assetPrefix:"/FrontEndTechnicalChallenge/",
   reactStrictMode: true,
   images: {
     loader: 'akamai',
