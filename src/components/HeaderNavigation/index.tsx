@@ -12,7 +12,7 @@ export const HeaderNavigation = ({ headerNavigators }: HeaderNavigation) => {
   return (
     <div className={styles.navigationContainer}>
       <nav>
-        {headerNavigators?.map((item: any) => (
+        {headerNavigators?.map((item) => (
           <Link
             key={item.href}
             href={{

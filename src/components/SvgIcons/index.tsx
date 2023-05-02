@@ -5,9 +5,14 @@ type SvgIconProps = {
 };
 
 export const SvgIcon = ({ svgIconType }: SvgIconProps) => {
+  const icons: any = svgIcons;
   return (
     <div>
-      {svgIcons[svgIconType] ? svgIcons[svgIconType] : <div>no such icon</div>}
+      {svgIconType && icons[svgIconType] ? (
+        icons[svgIconType]
+      ) : (
+        <div>no such icon</div>
+      )}
     </div>
   );
 };

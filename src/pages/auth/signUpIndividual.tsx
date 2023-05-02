@@ -123,7 +123,7 @@ const SignUpIndividual = ({}: SignInSignUpIndividual) => {
           </div>
         </div>
 
-        <Footer isVisible={true} />
+        <Footer />
       </div>
       <div className={styles.rightSideBlock}>
         <RightSideBlock

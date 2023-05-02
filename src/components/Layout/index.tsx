@@ -13,7 +13,7 @@ const Layout = ({ children, isFooterVisible }: I_Layout) => {
     <main className={styles.mainLayoutContainer}>
       <Header />
       <div className={styles.appContainer}>{children}</div>
-      <Footer isVisible={isFooterVisible} />
+      <Footer />
     </main>
   );
 };

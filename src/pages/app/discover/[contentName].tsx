@@ -84,7 +84,7 @@ const Content = ({ headerCurrentLink }: ContentProps) => {
                       <div
                         className={styles.form}
                         onChange={(e: React.FormEvent<HTMLInputElement>) => {
-                          setSelectedAnswer(e.target.value);
+                          setSelectedAnswer(e.currentTarget.value);
                         }}
                       >
                         {selectedLinkContentData.data.steps[
