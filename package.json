@@ -2,7 +2,7 @@
   "name": "my-test-challenge",
   "version": "0.1.0",
   "private": true,
-  "homepage":"https://bezirgen8989.github.io/FrontEndTechnicalChallenge/",
+  "homepage":"https://bezirgen8989.github.io/FrontEndTechnicalChallenge",
   "scripts": {
     "dev": "next dev",
     "build": "next build",

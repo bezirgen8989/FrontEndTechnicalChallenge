@@ -8,6 +8,7 @@ const nextConfig = {
   images: {
     loader: 'akamai',
     path: '', 
+    domains: ['https://bezirgen8989.github.io/FrontEndTechnicalChallenge/'],
     unoptimized: true
   },
   sassOptions:{
