@@ -34,13 +34,12 @@
           padding-bottom: 2rem;
           @media(min-width: 300px) and (max-width: 767px) and (orientation: portrait) {
             width: 100%;
-            text-align: center;
             padding-top: 50px;
           }
           @media(max-width: 1024px) and (orientation: portrait),
           (max-width: 1279px) and (orientation: landscape) {
-            width: 100%;
-            text-align: center;
+            width: 75%;
+            text-align: left;
           }
         }
   
@@ -54,12 +53,12 @@
           width: 45%;
           @media(min-width: 300px) and (max-width: 767px) and (orientation: portrait) {
             width: 80%;
-            text-align: center;
+            text-align: left;
           }
           @media(max-width: 1024px) and (orientation: portrait),
           (max-width: 1279px) and (orientation: landscape) {
             width: 75%;
-            text-align: center;
+            text-align: left;
           }
           &>div {
             padding-bottom: 1.2rem;

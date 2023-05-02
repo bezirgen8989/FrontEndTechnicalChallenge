@@ -13,7 +13,7 @@ export const svgIcons = {
     </linearGradient>
     </defs>
     </svg>,
-    business: <svg width="30" height="28" viewBox="0 0 30 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+    business: <svg width="28" height="28" viewBox="0 0 30 28" fill="none" xmlns="http://www.w3.org/2000/svg">
     <path d="M16.5 20H13.5C12.675 20 12 19.325 12 18.5H1.515V24.5C1.515 26.15 2.865 27.5 4.515 27.5H25.5C27.15 27.5 28.5 26.15 28.5 24.5V18.5H18C18 19.325 17.325 20 16.5 20ZM27 6.5H21C21 3.185 18.315 0.5 15 0.5C11.685 0.5 9 3.185 9 6.5H3C1.35 6.5 0 7.85 0 9.5V14C0 15.665 1.335 17 3 17H12V15.5C12 14.675 12.675 14 13.5 14H16.5C17.325 14 18 14.675 18 15.5V17H27C28.65 17 30 15.65 30 14V9.5C30 7.85 28.65 6.5 27 6.5ZM12 6.5C12 4.85 13.35 3.5 15 3.5C16.65 3.5 18 4.85 18 6.5H11.985H12Z" fill="url(#paint0_linear_2_4)"/>
     <path d="M16.5 20H13.5C12.675 20 12 19.325 12 18.5H1.515V24.5C1.515 26.15 2.865 27.5 4.515 27.5H25.5C27.15 27.5 28.5 26.15 28.5 24.5V18.5H18C18 19.325 17.325 20 16.5 20ZM27 6.5H21C21 3.185 18.315 0.5 15 0.5C11.685 0.5 9 3.185 9 6.5H3C1.35 6.5 0 7.85 0 9.5V14C0 15.665 1.335 17 3 17H12V15.5C12 14.675 12.675 14 13.5 14H16.5C17.325 14 18 14.675 18 15.5V17H27C28.65 17 30 15.65 30 14V9.5C30 7.85 28.65 6.5 27 6.5ZM12 6.5C12 4.85 13.35 3.5 15 3.5C16.65 3.5 18 4.85 18 6.5H11.985H12Z" fill="url(#paint1_linear_2_4)"/>
     <defs>
@@ -102,6 +102,17 @@ export const svgIcons = {
     search: <svg width="19" height="19" viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path d="M18 18L17.0714 17.0714L13.8571 13.8571M16 8.5C16 9.48491 15.806 10.4602 15.4291 11.3701C15.0522 12.2801 14.4997 13.1069 13.8033 13.8033C13.1069 14.4997 12.2801 15.0522 11.3701 15.4291C10.4602 15.806 9.48491 16 8.5 16C7.51509 16 6.53982 15.806 5.62987 15.4291C4.71993 15.0522 3.89314 14.4997 3.1967 13.8033C2.50026 13.1069 1.94781 12.2801 1.5709 11.3701C1.19399 10.4602 1 9.48491 1 8.5C1 6.51088 1.79018 4.60322 3.1967 3.1967C4.60322 1.79018 6.51088 1 8.5 1C10.4891 1 12.3968 1.79018 13.8033 3.1967C15.2098 4.60322 16 6.51088 16 8.5Z" stroke="#4B516A" strokeOpacity="0.56" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"/>
 </svg>,
+
+noneActiveSwitchArrow:<svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect opacity="0.52" x="39.5" y="39.5" width="39" height="39" rx="19.5" transform="rotate(-180 39.5 39.5)" stroke="#4B516A"/>
+<path opacity="0.52" d="M23.6666 11.9989L15.6666 19.9989L23.6666 27.9989" stroke="#4B516A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>,
+
+activeSwitchArrow: <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect x="0.5" y="0.5" width="39" height="39" rx="19.5" stroke="#2B3E9B"/>
+<path d="M16.3334 28.0011L24.3334 20.0011L16.3334 12.0011" stroke="#2B3E9B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>,
+
 
     
     

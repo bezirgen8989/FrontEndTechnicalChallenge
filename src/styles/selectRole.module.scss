@@ -46,6 +46,7 @@
           font-family: "Inter-SemiBold";
           font-size: 15px;
           line-height: 18px;
+          text-align: center;
         }
       }
       @media(min-width: 374px) and (max-width: 767px) and (orientation: portrait) {
@@ -73,5 +74,38 @@
 }
 
 .imageContainerDescription {
-  padding-left: 6.5625rem;
+  width: 100%;
+  padding-left: 80px;
+  display: flex;
+  align-items: center;
+  height: 100px;
+  & > .descriptionBlock{
+    padding-right: 47px;
+    & > h1{
+      font-family: $inter-600;
+      font-size: 22px;
+      line-height: 27px;
+      padding: 0;
+      margin: 0;
+      padding-bottom: 12px;
+    }
+    & > p{
+      font-family: $inter-400;
+      font-size: 14px;
+      line-height: 170%;
+      padding: 0;
+      margin: 0;
+    }
+  }
+  & > .arrowsBtnContainer{
+    display: flex;
+    justify-content: space-between;
+    width: 6.5rem;
+    & > div{
+      cursor: pointer;
+    }
+    &:first-child{
+      padding-left: 47px;
+    }
+  }
 }

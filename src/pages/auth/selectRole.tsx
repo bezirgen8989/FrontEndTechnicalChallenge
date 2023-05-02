@@ -9,6 +9,7 @@ import { useRouter } from "next/router";
 import { RightSideBlock } from "@/components/RightSideBlock";
 import Footer from "@/components/Footer";
 import selectRolePageImage from "../../assets/images/newGeneralInfoImage.png";
+import { SvgIcon } from "@/components/SvgIcons";
 
 const roles = [
   {
@@ -50,11 +51,17 @@ const SelectRole = () => {
   const footerElement = () => {
     return (
       <div className={styles.imageContainerDescription}>
-        <h1>Accelerating the next generation of the internet</h1>
-        <p>
-          Participate in over 100+ protocols with one click | Zero to operator
-          in 60 seconds
-        </p>
+        <div className={styles.descriptionBlock}>
+          <h1>Accelerating the next generation of the internet</h1>
+          <p>
+            Participate in over 100+ protocols with one click | Zero to operator
+            in 60 seconds
+          </p>
+        </div>
+        <div className={styles.arrowsBtnContainer}>
+          <SvgIcon svgIconType="noneActiveSwitchArrow" />
+          <SvgIcon svgIconType="activeSwitchArrow" />
+        </div>
       </div>
     );
   };
