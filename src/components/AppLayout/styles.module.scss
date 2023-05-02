@@ -214,8 +214,9 @@
           position: absolute;
           left: 10px;
           bottom: 30%;
+          z-index: 0;
           @media(min-width: 374px) and (max-width: 767px) and (orientation: portrait) {
-            left: 8.5%;
+            left: 15px;
             bottom: 30%;
           }
         }

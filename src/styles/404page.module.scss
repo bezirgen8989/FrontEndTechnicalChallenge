@@ -1,0 +1,49 @@
+@import "./variables.scss";
+
+.page404Container{
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  & > .page404Block{
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    & > .page404Header{
+      width: 50%;
+      font-size: 26px;
+      color: $main-text;
+      font-family: $inter-800;
+    }
+    & > .page404Description{
+      width: 50%;
+      font-family: $inter-400;
+      font-size: 20px;
+    }
+    & > .page404GoBackHome{
+      width: 50%;
+      & > a {
+        font-family: $inter-400;
+        font-size: 20px;
+      }
+      
+    }
+  }
+  & > .rightSideBlock{
+    width: 50%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    & > div > div > img {
+      width: 80% !important;
+      height: 100%;
+
+    }
+  }
+}
