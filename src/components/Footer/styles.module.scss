@@ -1,8 +1,9 @@
 @import "../../styles/variables.scss";
 
 .footerContainer {
-    position: absolute;
-    bottom: 0;
+    // position: absolute;
+    // bottom: 0;
+    // min-width: 100Vh;
     text-align: center;
     width: 100%;
     & > .footerBlock{

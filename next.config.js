@@ -1,10 +1,6 @@
 /** @type {import('next').NextConfig} */
 const path = require('path')
 
-const repo = 'change-me-to-your-repo'
-const assetPrefix = `/${repo}/`
-const basePath = `/${repo}`
-
 const nextConfig = {
   reactStrictMode: true,
   exportTrailingSlash: true,

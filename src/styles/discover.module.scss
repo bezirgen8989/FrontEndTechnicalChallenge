@@ -17,7 +17,10 @@
     height: 100%;
 
     @media(min-width: 374px) and (max-width: 767px) and (orientation: portrait) {
-      height: 85%;
+      overflow-y: auto;
+    height: calc(100vh - 106px);
+    // margin-top: 30px;
+      // height: 85%;
     }
 
     display: flex;
@@ -34,6 +37,10 @@
       padding-top: 35px;
       width: 42.5rem;
       position: relative;
+      @media(min-width: 374px) and (max-width: 767px) and (orientation: portrait) {
+        overflow-y: auto;
+    height: 84%;
+      }
 
       &>.header {
         &>.title {
@@ -44,6 +51,7 @@
       }
 
       &>.dataContainer {
+        
 
         &>.description,
         p {

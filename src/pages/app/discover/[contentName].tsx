@@ -1,19 +1,13 @@
 import Head from "next/head";
 import styles from "../../../styles/discover.module.scss";
-import { AppLayout } from "@/components/AppLayout";
 import { HeaderNavigation } from "@/components/HeaderNavigation";
 import { Key, useContext, useState } from "react";
 import { Button } from "@/components/Button";
 import { AppContext } from "@/Context";
 import { useRouter } from "next/router";
 
-type ContentProps = {
-  headerCurrentLink: string;
-};
-
 const Content = () => {
   const router = useRouter();
-  const headerCurrentLink = router.query.contentName as unknown as number;
 
   const { discoverWeb3HeaderNavigators, discoverWeb3LinksContent } =
     useContext(AppContext);
@@ -32,109 +26,96 @@ const Content = () => {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <AppLayout>
-        {
-          <main className={styles.discoverMainContainer}>
-            <HeaderNavigation headerNavigators={discoverWeb3HeaderNavigators} />
-            <section className={styles.sectionContainer}>
-              <div className={styles.sectionBlocks}>
-                <div className={styles.header}>
-                  <div className={styles.title}>
-                    {selectedLinkContentData?.data.title}
-                  </div>
+
+      <main className={styles.discoverMainContainer}>
+        <HeaderNavigation headerNavigators={discoverWeb3HeaderNavigators} />
+        <section className={styles.sectionContainer}>
+          <div className={styles.sectionBlocks}>
+            <div className={styles.header}>
+              <div className={styles.title}>
+                {selectedLinkContentData?.data.title}
+              </div>
+            </div>
+
+            {selectedLinkContentData?.data.steps && (
+              <div className={styles.dataContainer}>
+                <div className={styles.description}>
+                  {selectedLinkContentData.data.description}
+                  <p>
+                    {currentQuestion + 1}/
+                    {selectedLinkContentData.data.steps.length} Questions
+                    answered
+                  </p>
+                </div>
+                <div className={styles.progressBar}>
+                  {selectedLinkContentData.data.steps.map(
+                    (_: any, id: Key | null | undefined) => (
+                      <br
+                        key={id}
+                        className={`${
+                          currentQuestion === id && styles.activeBar
+                        }`}
+                      />
+                    )
+                  )}
                 </div>
 
-                {selectedLinkContentData?.data.steps && (
-                  <div className={styles.dataContainer}>
-                    <div className={styles.description}>
-                      {selectedLinkContentData.data.description}
-                      <p>
-                        {currentQuestion + 1}/
-                        {selectedLinkContentData.data.steps.length} Questions
-                        answered
-                      </p>
-                    </div>
-                    <div className={styles.progressBar}>
-                      {selectedLinkContentData.data.steps.map(
-                        (_: any, id: Key | null | undefined) => (
-                          <br
-                            key={id}
-                            className={`${
-                              currentQuestion === id && styles.activeBar
-                            }`}
+                <div className={styles.formContainer}>
+                  <div className={styles.header}>
+                    <h1>{currentQuestion + 1}</h1>
+                    <h1>{selectedLinkContentData.data.steps[1].question}</h1>
+                  </div>
+
+                  <div
+                    className={styles.form}
+                    onChange={(e: React.FormEvent<HTMLInputElement>) => {
+                      setSelectedAnswer(e.currentTarget.value);
+                    }}
+                  >
+                    {selectedLinkContentData.data.steps[
+                      currentQuestion
+                    ].variants.map((variant: string, id: number) => (
+                      <div key={id} className={styles.formItems}>
+                        <div className={styles.radio}>
+                          <input type="radio" name={"answer"} value={variant} />
+                          <span
+                            className={
+                              selectedAnswer === variant ? styles.active : ""
+                            }
                           />
-                        )
-                      )}
-                    </div>
-
-                    <div className={styles.formContainer}>
-                      <div className={styles.header}>
-                        <h1>{currentQuestion + 1}</h1>
-                        <h1>
-                          {selectedLinkContentData.data.steps[1].question}
-                        </h1>
-                      </div>
-
-                      <div
-                        className={styles.form}
-                        onChange={(e: React.FormEvent<HTMLInputElement>) => {
-                          setSelectedAnswer(e.currentTarget.value);
-                        }}
-                      >
-                        {selectedLinkContentData.data.steps[
-                          currentQuestion
-                        ].variants.map((variant: string, id: number) => (
-                          <div key={id} className={styles.formItems}>
-                            <div className={styles.radio}>
-                              <input
-                                type="radio"
-                                name={"answer"}
-                                value={variant}
-                              />
-                              <span
-                                className={
-                                  selectedAnswer === variant
-                                    ? styles.active
-                                    : ""
-                                }
-                              />
-                            </div>
-
-                            <label className={styles.radioLabel}>
-                              {variant}
-                            </label>
-                          </div>
-                        ))}
-                        <div className={styles.btnControllers}>
-                          <div className={styles.btn}>
-                            <Button title={"Cancel"} btnType="gray" />
-                          </div>
-                          <div className={styles.btn}>
-                            <Button
-                              title={"Next"}
-                              toggleHandler={(e) => {
-                                e.preventDefault();
-                                if (
-                                  currentQuestion <=
-                                  selectedLinkContentData.data.steps[
-                                    currentQuestion
-                                  ].variants.length
-                                ) {
-                                  setCurrentQuestion((prev) => prev + 1);
-                                }
-                              }}
-                            />
-                          </div>
                         </div>
+
+                        <label className={styles.radioLabel}>{variant}</label>
+                      </div>
+                    ))}
+                    <div className={styles.btnControllers}>
+                      <div className={styles.btn}>
+                        <Button title={"Cancel"} btnType="gray" />
+                      </div>
+                      <div className={styles.btn}>
+                        <Button
+                          title={"Next"}
+                          toggleHandler={(e) => {
+                            e.preventDefault();
+                            if (
+                              currentQuestion <=
+                              selectedLinkContentData.data.steps[
+                                currentQuestion
+                              ].variants.length
+                            ) {
+                              setCurrentQuestion((prev) => prev + 1);
+                            }
+                          }}
+                        />
                       </div>
                     </div>
                   </div>
-                )}
+                </div>
               </div>
-            </section>
-          </main>
-        }
-      </AppLayout>
+            )}
+          </div>
+        </section>
+      </main>
     </>
   );
 };

@@ -9,6 +9,7 @@
     flex-direction: column;
     background: $white-color;
     height: 100%;
+    min-height: 100vh;
     width: 50%;
     @media(min-width: 374px) and (max-width: 767px) and (orientation: portrait) {
       width: 100%;
@@ -17,13 +18,14 @@
     .rolesBlok {
       display: flex;
       flex-direction: column;
-      justify-content: center;
+      justify-content: space-between;
       align-items: center;
-      height: 87%;
+      height: 100%;
       width: 100%;
       text-align: left;
       & > div {
         width: 30vw;
+        height: 100%;
         display: flex;
         flex-direction: column;
         justify-content: center;

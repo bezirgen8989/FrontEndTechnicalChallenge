@@ -8,6 +8,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { RightSideBlock } from "@/components/RightSideBlock";
 import Footer from "@/components/Footer";
+import selectRolePageImage from "../../assets/images/newGeneralInfoImage.png";
 
 const roles = [
   {
@@ -99,7 +100,7 @@ const SelectRole = () => {
         </div>
         <div className={styles.rightSideBlock}>
           <RightSideBlock
-            imageSrc="../assets/images/newGeneralInfoImage.png"
+            imageSrc={selectRolePageImage.src}
             imageAlt="General Info Image"
             imageWidth={1031 * 2}
             imageHeight={675 * 2}

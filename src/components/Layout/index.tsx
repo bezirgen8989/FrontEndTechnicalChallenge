@@ -5,10 +5,9 @@ import styles from "./styles.module.scss";
 
 interface I_Layout {
   children: ReactNode;
-  isFooterVisible: boolean;
 }
 
-const Layout = ({ children, isFooterVisible }: I_Layout) => {
+const Layout = ({ children }: I_Layout) => {
   return (
     <main className={styles.mainLayoutContainer}>
       <Header />

@@ -8,7 +8,8 @@
     background: #FFFFFF;
 
     @media(min-width: 374px) and (max-width: 767px) and (orientation: portrait) {
-        overflow: auto;
+        overflow-x: auto;
+        width: 100%;
     }
 
     &>nav {
@@ -16,6 +17,10 @@
         display: flex;
         align-items: center;
         height: 100%;
+        @media(min-width: 374px) and (max-width: 767px) and (orientation: portrait) {
+            left: -30%;
+            width: 98%;
+          }
 
         &>a {
             padding-right: 2.5rem;

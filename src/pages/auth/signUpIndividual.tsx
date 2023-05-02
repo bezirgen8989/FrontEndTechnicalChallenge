@@ -5,9 +5,10 @@ import { RightSideBlock } from "@/components/RightSideBlock";
 import { FormInput } from "@/components/Input";
 import { Button } from "@/components/Button";
 import Footer from "@/components/Footer";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useRouter } from "next/router";
 import { PasswordPower } from "@/components/PasswordPower";
+import signUpIndividualImage from "../../assets/images/signUpGeneralInfo.png";
 
 type SignInSignUpIndividual = {};
 
@@ -127,7 +128,7 @@ const SignUpIndividual = ({}: SignInSignUpIndividual) => {
       </div>
       <div className={styles.rightSideBlock}>
         <RightSideBlock
-          imageSrc="../assets/images/signUpGeneralInfo.png"
+          imageSrc={signUpIndividualImage.src}
           imageAlt="General Info Image"
           imageWidth={1031 * 2}
           imageHeight={675 * 2}
