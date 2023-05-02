@@ -29,6 +29,7 @@ const Content = () => {
 
       <main className={styles.discoverMainContainer}>
         <HeaderNavigation headerNavigators={discoverWeb3HeaderNavigators} />
+
         <section className={styles.sectionContainer}>
           <div className={styles.sectionBlocks}>
             <div className={styles.header}>

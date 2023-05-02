@@ -8,26 +8,30 @@
   position: relative;
 
   &>.appContainerNav {
-
+    width: 25%;
+    background-color: #FFFFFF;
+    height: 100%;
+    filter: drop-shadow(0px 8px 48px rgba(25, 16, 73, 0.08));
     @media(max-width: 1024px) and (orientation: portrait),
     (max-width: 1279px) and (orientation: landscape) {
       position: absolute;
       height: 100%;
       left: -30%;
-      transition: 0.5s ease;
+      transition: 0.4s ease;
       z-index: 1;
-      width: 33%;
+      width: 40%;
     }
 
     @media(min-width: 374px) and (max-width: 767px) and (orientation: portrait) {
       left: -30%;
       width: 98%;
     }
+    @media(min-width: 359px) and (max-width: 467px) and (orientation: portrait) {
+      left: -30%;
+      width: 96%;
+    }
 
-    width: 25%;
-    background-color: #FFFFFF;
-    height: 100%;
-    filter: drop-shadow(0px 8px 48px rgba(25, 16, 73, 0.08));
+    
 
     &>.navigationContainer {
       @media(min-width: 374px) and (max-width: 767px) and (orientation: portrait) {
