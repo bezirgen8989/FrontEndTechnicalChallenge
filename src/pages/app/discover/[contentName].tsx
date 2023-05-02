@@ -16,9 +16,7 @@ export const getServerSideProps = (context: {
 }) => {
   return {
     props: {
-      headerCurrentLink: context.query.headerCurrentLink
-        ? context.query.headerCurrentLink
-        : "No data",
+      headerCurrentLink: context.query.headerCurrentLink,
     },
   };
 };

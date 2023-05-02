@@ -12,7 +12,7 @@ const Discover = () => {
       pathname: "./discover/overview",
       query: { headerCurrentLink: "overview" },
     });
-  }, []);
+  }, [router]);
 
   return (
     <>
@@ -23,7 +23,7 @@ const Discover = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <AppLayout>
-        {<main className={styles.discoverMainContainer}></main>}
+        <></>
       </AppLayout>
     </>
   );
