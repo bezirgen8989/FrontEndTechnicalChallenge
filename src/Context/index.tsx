@@ -1,9 +1,16 @@
+import { LinksWithQuery, rolesType } from "@/types/types";
 import { ReactElement, createContext, useEffect, useState } from "react";
 
-type LinksWithQuery = {
-  href: string;
-  linkName: string;
-  query: { headerCurrentLink: string };
+type DiscoverWeb3Links = {
+  id: string;
+  data: {
+    title: string;
+    description: string;
+    steps?: {
+      question: string;
+      variants: string[];
+    }[];
+  };
 };
 
 type AppContextProps = {
@@ -12,7 +19,8 @@ type AppContextProps = {
   tootleMenuHandlerClose: () => void;
   screenType: string;
   discoverWeb3HeaderNavigators: LinksWithQuery[];
-  discoverWeb3LinksContent: any[];
+  discoverWeb3LinksContent: DiscoverWeb3Links[];
+  roles: rolesType[];
 };
 
 export const AppContext = createContext<AppContextProps>({
@@ -22,6 +30,7 @@ export const AppContext = createContext<AppContextProps>({
   tootleMenuHandlerClose: () => {},
   discoverWeb3HeaderNavigators: [],
   discoverWeb3LinksContent: [],
+  roles: [],
 });
 
 export const AppProvider = ({ children }: { children: ReactElement }) => {
@@ -79,6 +88,25 @@ export const AppProvider = ({ children }: { children: ReactElement }) => {
       href: "/app/discover/entrepreneur",
       linkName: "Entrepreneur Toolkit",
       query: { headerCurrentLink: "entrepreneur" },
+    },
+  ];
+
+  const roles = [
+    {
+      id: "Individual",
+      title: "Individual",
+      description:
+        "For individuals who want to participate, develop or build with a click of a button.",
+      icon: "individual",
+      status: false,
+    },
+    {
+      id: "Business",
+      title: "Business",
+      description:
+        "For companies and institutions who need access to our suite of tools and real-time insights to manage and run their operations.",
+      icon: "business",
+      status: false,
     },
   ];
 
@@ -181,6 +209,7 @@ export const AppProvider = ({ children }: { children: ReactElement }) => {
         screenType: screenSize,
         discoverWeb3HeaderNavigators,
         discoverWeb3LinksContent,
+        roles,
       }}
     >
       {children}

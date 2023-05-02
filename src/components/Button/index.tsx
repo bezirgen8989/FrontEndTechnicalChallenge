@@ -5,7 +5,7 @@ type ButtonProps = {
   title: string;
   disabled?: boolean;
   icon?: string;
-  toggleHandler?: (event: any) => void;
+  toggleHandler?: (e: React.MouseEvent<HTMLElement>) => void;
   btnType?: string;
 };
 

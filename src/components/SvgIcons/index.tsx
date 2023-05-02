@@ -1,10 +1,9 @@
-import styles from "./styles.module.scss";
-import { svgIcons } from "../../assets/svgIcons";
+import { svgIcons } from "@/assets/svgIcons";
+
 type SvgIconProps = {
-  svgIconType?: string;
+  svgIconType: keyof typeof svgIcons;
 };
 
 export const SvgIcon = ({ svgIconType }: SvgIconProps) => {
-  const icons: any = svgIcons;
-  return <div>{svgIconType && icons[svgIconType] && icons[svgIconType]}</div>;
+  return <div>{svgIconType ? svgIcons[svgIconType] : "no such element"}</div>;
 };

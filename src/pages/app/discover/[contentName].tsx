@@ -50,7 +50,7 @@ const Content = () => {
                 </div>
                 <div className={styles.progressBar}>
                   {selectedLinkContentData.data.steps.map(
-                    (_: any, id: Key | null | undefined) => (
+                    (_, id: Key | null | undefined) => (
                       <br
                         key={id}
                         className={`${
@@ -98,6 +98,7 @@ const Content = () => {
                           title={"Next"}
                           toggleHandler={(e) => {
                             e.preventDefault();
+                            if (!selectedLinkContentData.data.steps) return;
                             if (
                               currentQuestion <=
                               selectedLinkContentData.data.steps[

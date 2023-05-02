@@ -2,7 +2,7 @@ import Head from "next/head";
 import styles from "../../styles/selectRole.module.scss";
 import Header from "@/components/Header";
 import { Card } from "@/components/Card";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { Button } from "@/components/Button";
 import Link from "next/link";
 import { useRouter } from "next/router";
@@ -10,28 +10,12 @@ import { RightSideBlock } from "@/components/RightSideBlock";
 import Footer from "@/components/Footer";
 import selectRolePageImage from "../../assets/images/newGeneralInfoImage.png";
 import { SvgIcon } from "@/components/SvgIcons";
-
-const roles = [
-  {
-    id: "Individual",
-    title: "Individual",
-    description:
-      "For individuals who want to participate, develop or build with a click of a button.",
-    icon: "individual",
-    status: false,
-  },
-  {
-    id: "Business",
-    title: "Business",
-    description:
-      "For companies and institutions who need access to our suite of tools and real-time insights to manage and run their operations.",
-    icon: "business",
-    status: false,
-  },
-];
+import { rolesType } from "@/types/types";
+import { AppContext } from "@/Context";
 
 const SelectRole = () => {
-  const [rolesState, setRolesState] = useState<any[]>(roles);
+  const { roles } = useContext(AppContext);
+  const [rolesState, setRolesState] = useState<rolesType[]>(roles);
   const [selectedRole, setSelectedRole] = useState<string>("");
   const router = useRouter();
 

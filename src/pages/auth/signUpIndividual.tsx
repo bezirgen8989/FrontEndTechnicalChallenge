@@ -40,7 +40,7 @@ const SignUpIndividual = ({}: SignInSignUpIndividual) => {
     );
   };
 
-  const onFormSubmit = (e: any) => {
+  const onFormSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (
       !Object.values(formData).length ||
@@ -54,7 +54,7 @@ const SignUpIndividual = ({}: SignInSignUpIndividual) => {
     }
   };
 
-  const formOnChange = (e: any) => {
+  const formOnChange = (e: React.ChangeEvent<HTMLFormElement>) => {
     setFormData((prev) => ({
       ...prev,
       [e.target.name]:
