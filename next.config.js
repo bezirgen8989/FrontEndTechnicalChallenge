@@ -6,6 +6,8 @@ const nextConfig = {
     publicUrl: '/public',
   },
   images: {
+    loader: 'akamai',
+    path: '', 
     unoptimized: true
   },
   sassOptions:{
