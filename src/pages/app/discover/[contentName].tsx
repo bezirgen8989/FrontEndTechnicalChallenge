@@ -193,7 +193,7 @@ const Content = ({ currentPage, entrepreneurQuestions }: ContentProps) => {
 
 export default Content;
 
-export const getServerSideProps: GetServerSideProps = async (context) => {
+export const getInitialProps: GetServerSideProps = async (context) => {
   try {
     const response = await fetch(
       `http://localhost:3000/api/discoverWebThree/${context.query.contentName}`
