@@ -24,7 +24,7 @@ const Home = () => {
 
 export default Home;
 
-export const getServerSideProps: GetServerSideProps = async () => {
+export const getInitialProps: GetServerSideProps = async () => {
   // fetch user specific data from BE
   const userData = {
     userAva: "",
