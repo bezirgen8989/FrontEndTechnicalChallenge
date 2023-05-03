@@ -103,6 +103,9 @@ export const AppLayout = ({ children }: AppLayoutProps) => {
     if (typeof window !== "undefined" && token) {
       setUserData(JSON.parse(token));
     }
+    if (!token) {
+      router.push("/auth");
+    }
   }, [router]);
 
   return (
