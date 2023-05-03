@@ -54,6 +54,27 @@ export const AppLayout = ({ children }: AppLayoutProps) => {
     }
   };
 
+  const handleMouseDown = (e: React.MouseEvent) => {
+    setStartX(e.pageX);
+  };
+
+  const handleMouseMove = (e: React.MouseEvent) => {
+    if (startX) {
+      const distanceX = e.pageX - startX;
+      if (distanceX > 50) {
+        swipeRightHandler();
+      } else if (distanceX < -50) {
+        swipeLeftHandler();
+      }
+    }
+  };
+
+  const handleMouseUp = () => {
+    if (startX) {
+      setStartX(null);
+    }
+  };
+
   const currentRoute = router.asPath
     .split("/")
     .filter((item) => item !== "")[1];
@@ -89,6 +110,9 @@ export const AppLayout = ({ children }: AppLayoutProps) => {
       className={styles.appContainer}
       onTouchStart={handleTouchStart}
       onTouchEnd={handleTouchEnd}
+      onMouseDown={handleMouseDown}
+      onMouseMove={handleMouseMove}
+      onMouseUp={handleMouseUp}
     >
       <nav
         className={styles.appContainerNav}
