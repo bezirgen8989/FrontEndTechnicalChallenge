@@ -7,7 +7,13 @@ const Home = () => {
   const router = useRouter();
 
   useEffect(() => {
-    router.push("app/nodes");
+    const isUserAut = localStorage.getItem("userFormData");
+    console.log(isUserAut);
+    if (isUserAut) {
+      router.push("app/nodes");
+    } else {
+      router.push("auth/selectRole");
+    }
   }, [router]);
 
   return (

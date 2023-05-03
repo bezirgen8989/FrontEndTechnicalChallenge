@@ -8,7 +8,12 @@ export default function App({ Component, pageProps }: AppProps) {
   const router = useRouter();
 
   const getContent = () => {
-    if (router.pathname.includes("/auth")) return <Component {...pageProps} />;
+    const routersPath = router.pathname
+      .split("/")
+      .filter((item) => item !== "");
+    const pagesWhereLayoutNotNeed = ["auth", "404"];
+    if (routersPath.some((path) => pagesWhereLayoutNotNeed.indexOf(path) >= 0))
+      return <Component {...pageProps} />;
 
     return (
       <AppLayout>

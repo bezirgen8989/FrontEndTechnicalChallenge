@@ -19,9 +19,9 @@ export default function FourOhFour() {
         </div>
         <div className={styles.page404GoBackHome}>
           <Button
-            title={"Go back home"}
+            title={"Go back"}
             toggleHandler={() => {
-              router.push("./");
+              router.back();
             }}
           />
         </div>
