@@ -44,9 +44,11 @@
         }
   
         &>.validationMessage {
+          text-align: center;
+          width: 35%;
           padding-top: 2rem;
           height: 20px;
-          color: rgb(218, 147, 147);
+          color: red;
         }
   
         &>form {

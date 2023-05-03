@@ -9,7 +9,7 @@ import { useRouter } from "next/router";
 import { RightSideBlock } from "@/components/RightSideBlock";
 import Footer from "@/components/Footer";
 import selectRolePageImage from "../../assets/images/newGeneralInfoImage.png";
-import { SvgIcon } from "@/components/SvgIcons";
+import { IconName, SvgIcon } from "@/components/SvgIcon";
 import { rolesType } from "@/types/types";
 import { AppContext } from "@/Context";
 
@@ -29,7 +29,8 @@ const SelectRole = () => {
   };
 
   const startAuthHandler = () => {
-    router.push(`/auth/signUp${selectedRole}`);
+    localStorage.setItem("selectedRole", selectedRole);
+    router.push(`/auth/signUp${selectedRole}/`);
   };
 
   const footerElement = () => {
@@ -43,8 +44,8 @@ const SelectRole = () => {
           </p>
         </div>
         <div className={styles.arrowsBtnContainer}>
-          <SvgIcon svgIconType="noneActiveSwitchArrow" />
-          <SvgIcon svgIconType="activeSwitchArrow" />
+          <SvgIcon name="noneActiveSwitchArrow" />
+          <SvgIcon name="activeSwitchArrow" />
         </div>
       </div>
     );
@@ -74,7 +75,7 @@ const SelectRole = () => {
                     id={item.id}
                     title={item.title}
                     description={item.description}
-                    icon={item.icon}
+                    icon={item.icon as IconName}
                     active={item.status}
                     activeStatusHandler={() => itemStatusHandler(item.id)}
                   />
@@ -82,7 +83,7 @@ const SelectRole = () => {
                 <Button title="Get Started" toggleHandler={startAuthHandler} />
                 <p>
                   Already have an account?
-                  <Link href={"/signIn"}> Sign in</Link>
+                  <Link href={"/auth/signIn"}> Sign in</Link>
                 </p>
               </div>
             </div>

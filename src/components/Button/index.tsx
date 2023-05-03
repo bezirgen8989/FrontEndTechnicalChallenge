@@ -1,4 +1,4 @@
-import { SvgIcon } from "../SvgIcons";
+import { SvgIcon } from "../SvgIcon";
 import styles from "./style.module.scss";
 
 type ButtonProps = {

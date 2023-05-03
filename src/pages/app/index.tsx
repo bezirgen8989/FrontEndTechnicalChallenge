@@ -1,3 +1,4 @@
+import { GetServerSideProps } from "next";
 import Head from "next/head";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
@@ -22,3 +23,17 @@ const Home = () => {
 };
 
 export default Home;
+
+export const getServerSideProps: GetServerSideProps = async () => {
+  // fetch user specific data from BE
+  const userData = {
+    userAva: "",
+    userName: "",
+    userEmail: "",
+  };
+  return {
+    props: {
+      userData,
+    },
+  };
+};

@@ -1,11 +1,11 @@
-import { SvgIcon } from "../SvgIcons";
+import { IconName, SvgIcon } from "../SvgIcon";
 import styles from "./styles.module.scss";
 
 type CardProps = {
   id: string;
   title?: string;
   description?: string;
-  icon?: string;
+  icon: IconName;
   active?: boolean;
   activeStatusHandler: (id: string) => void;
 };
@@ -26,7 +26,7 @@ export const Card = ({
       }`}
     >
       <div className={styles.cardIconContainer}>
-        <SvgIcon svgIconType={icon} />
+        <SvgIcon name={icon} />
       </div>
       <div className={styles.cardInfoContainer}>
         <h1>{title}</h1>

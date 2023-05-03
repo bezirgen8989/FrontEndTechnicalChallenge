@@ -7,8 +7,10 @@ import { Button } from "@/components/Button";
 import Footer from "@/components/Footer";
 import { useState } from "react";
 import { useRouter } from "next/router";
-import { PasswordPower } from "@/components/PasswordPower";
+import { PasswordPower, StatusesMap } from "@/components/PasswordPower";
 import signUpIndividualImage from "../../assets/images/signUpGeneralInfo.png";
+import { GetStaticProps, GetStaticPropsContext, PreviewData } from "next";
+import { ParsedUrlQuery } from "querystring";
 
 type SignInSignUpIndividual = {};
 
@@ -18,14 +20,25 @@ type FormData = {
   userName?: string;
   email?: string;
   password?: string;
-  checkbox?: boolean;
+  agreement: boolean;
+  selectedRole: string;
 };
 
 const SignUpIndividual = ({}: SignInSignUpIndividual) => {
   const router = useRouter();
   const [isPasswordShow, setIsPasswordShow] = useState<boolean>(false);
   const [currentPassword, setCurrentPassword] = useState<string>("");
-  const [formData, setFormData] = useState<FormData>({});
+  const [currentPasswordStatus, setCurrentPasswordStatus] =
+    useState<StatusesMap>();
+  const [formData, setFormData] = useState<FormData>({
+    firstName: "",
+    lastName: "",
+    userName: "",
+    email: "",
+    password: "",
+    agreement: false,
+    selectedRole: "",
+  });
   const [validationMessage, setValidationMessage] = useState<string>("");
 
   const headerElement = () => {
@@ -40,17 +53,36 @@ const SignUpIndividual = ({}: SignInSignUpIndividual) => {
     );
   };
 
-  const onFormSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const onFormSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if (
-      !Object.values(formData).length ||
-      Object.values(formData).includes(false) ||
-      Object.values(formData).includes("")
-    ) {
+    const { firstName, lastName, userName, email, password } = formData;
+    const agreementValMessage =
+      "Please certify that you are 18 years of age or older, agree to Edgevana's Terms of Use, and have read the Privacy Policy before proceeding.";
+    if ([firstName, lastName, userName, email, password].includes("")) {
       setValidationMessage("Please fill data");
+    } else if (!formData.agreement) {
+      setValidationMessage(agreementValMessage);
+    } else if (!currentPasswordStatus?.strong) {
+      setValidationMessage("Please create strong password");
     } else {
-      localStorage.setItem("userFormData", JSON.stringify(formData));
-      router.push("/");
+      try {
+        const selectedRole = localStorage.getItem("selectedRole");
+        const response = await fetch("/api/auth/signUp", {
+          method: "POST",
+          body: JSON.stringify({ ...formData, selectedRole }),
+          headers: {
+            "Content-Type": "application/json",
+          },
+        });
+        if (response.status > 400 && response.status > 500) {
+          setValidationMessage(response.statusText);
+        } else {
+          localStorage.setItem("userFormData", JSON.stringify(formData));
+          router.push("/app");
+        }
+      } catch (error) {
+        console.error(error);
+      }
     }
   };
 
@@ -62,6 +94,9 @@ const SignUpIndividual = ({}: SignInSignUpIndividual) => {
     }));
     if (e.target.name === "password") {
       setCurrentPassword(e.target.value);
+    }
+    if (validationMessage.length) {
+      setValidationMessage("");
     }
   };
 
@@ -101,7 +136,10 @@ const SignUpIndividual = ({}: SignInSignUpIndividual) => {
                   icon={isPasswordShow ? "lineEye" : "eye"}
                   switchIconType={showPasswordStatus}
                 />
-                <PasswordPower enteredPassword={currentPassword} />
+                <PasswordPower
+                  enteredPassword={currentPassword}
+                  getPasswordStatus={setCurrentPasswordStatus}
+                />
               </div>
               <div className={styles.checkboxContainer}>
                 <input
@@ -139,4 +177,5 @@ const SignUpIndividual = ({}: SignInSignUpIndividual) => {
     </main>
   );
 };
+
 export default SignUpIndividual;

@@ -3,6 +3,7 @@ import styles from "./style.module.scss";
 
 type PasswordPowerProps = {
   enteredPassword: string;
+  getPasswordStatus: (passwordStrongStatus: StatusesMap) => void;
 };
 enum Statuses {
   weak = "weak",
@@ -10,9 +11,12 @@ enum Statuses {
   strong = "strong",
 }
 
-type StatusesMap = Record<Statuses, boolean>;
+export type StatusesMap = Record<Statuses, boolean>;
 
-export const PasswordPower = ({ enteredPassword }: PasswordPowerProps) => {
+export const PasswordPower = ({
+  enteredPassword,
+  getPasswordStatus,
+}: PasswordPowerProps) => {
   const [passwordStrongStatus, setPasswordStrongStatus] = useState<StatusesMap>(
     {
       weak: false,
@@ -31,6 +35,7 @@ export const PasswordPower = ({ enteredPassword }: PasswordPowerProps) => {
       normal: normalCriteria,
       strong: strongCriteria,
     });
+    getPasswordStatus(passwordStrongStatus);
   }, [enteredPassword]);
 
   return (

@@ -4,19 +4,69 @@ import { HeaderNavigation } from "@/components/HeaderNavigation";
 import { Key, useContext, useState } from "react";
 import { Button } from "@/components/Button";
 import { AppContext } from "@/Context";
-import { useRouter } from "next/router";
+import { GetServerSideProps } from "next";
 
-const Content = () => {
-  const router = useRouter();
+type ContentProps = {
+  currentPage: string;
+  entrepreneurQuestions: any;
+};
 
+const Content = ({ currentPage, entrepreneurQuestions }: ContentProps) => {
   const { discoverWeb3HeaderNavigators, discoverWeb3LinksContent } =
     useContext(AppContext);
   const [currentQuestion, setCurrentQuestion] = useState<number>(0);
   const [selectedAnswer, setSelectedAnswer] = useState<string>("");
+  const [formAnswers, setFormAnswers] = useState<string[]>([]);
+  const [formValidationMsg, setFormValidationMsg] = useState("");
+  const [reqData, setReqData] = useState();
 
   const selectedLinkContentData = discoverWeb3LinksContent.find(
-    (item) => item.id === router.query.contentName
+    (item) => item.id === currentPage
   );
+
+  const formOnChangeHandler = (e: React.FormEvent<HTMLFormElement>) => {
+    setSelectedAnswer(e.target.value);
+  };
+
+  const switchToNextQuestion = async (e: React.MouseEvent<HTMLElement>) => {
+    e.preventDefault();
+    const questionsLength =
+      entrepreneurQuestions[currentQuestion].variants.length;
+
+    if (currentQuestion <= questionsLength && selectedAnswer) {
+      setFormAnswers((prev) => [...prev, selectedAnswer]);
+      setCurrentQuestion((prev) => prev + 1);
+      setSelectedAnswer("");
+    }
+    if (
+      currentQuestion === entrepreneurQuestions.length - 1 &&
+      selectedAnswer
+    ) {
+      const response = await fetch("/api/discoverWebThree/postSurvey", {
+        method: "POST",
+        body: JSON.stringify(formAnswers),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      const { data, message } = await response.json();
+
+      if (response.statusText === "OK") {
+        setReqData(data);
+      } else {
+        setFormValidationMsg(message);
+      }
+    }
+  };
+
+  const switchToPevQuestion = (e: React.MouseEvent<HTMLElement>) => {
+    e.preventDefault();
+
+    if (currentQuestion !== 0) {
+      setFormAnswers(formAnswers.slice(0, -1));
+      setCurrentQuestion((prev) => prev - 1);
+    }
+  };
 
   return (
     <>
@@ -30,91 +80,99 @@ const Content = () => {
       <main className={styles.discoverMainContainer}>
         <HeaderNavigation headerNavigators={discoverWeb3HeaderNavigators} />
 
+        {reqData ? <h1>DONE</h1> : ""}
+
         <section className={styles.sectionContainer}>
           <div className={styles.sectionBlocks}>
             <div className={styles.header}>
               <div className={styles.title}>
                 {selectedLinkContentData?.data.title}
               </div>
+              <div className={styles.description}>
+                {selectedLinkContentData?.data.description}
+                <p>
+                  {currentQuestion + 1}/{entrepreneurQuestions.length} Questions
+                  answered
+                </p>
+              </div>
             </div>
 
-            {selectedLinkContentData?.data.steps && (
-              <div className={styles.dataContainer}>
-                <div className={styles.description}>
-                  {selectedLinkContentData.data.description}
-                  <p>
-                    {currentQuestion + 1}/
-                    {selectedLinkContentData.data.steps.length} Questions
-                    answered
-                  </p>
-                </div>
-                <div className={styles.progressBar}>
-                  {selectedLinkContentData.data.steps.map(
-                    (_, id: Key | null | undefined) => (
-                      <br
-                        key={id}
-                        className={`${
-                          currentQuestion === id && styles.activeBar
-                        }`}
-                      />
-                    )
-                  )}
-                </div>
-
-                <div className={styles.formContainer}>
-                  <div className={styles.header}>
-                    <h1>{currentQuestion + 1}</h1>
-                    <h1>{selectedLinkContentData.data.steps[1].question}</h1>
+            <div className={styles.dataContainer}>
+              {entrepreneurQuestions && (
+                <>
+                  <div className={styles.progressBar}>
+                    {entrepreneurQuestions.map(
+                      (
+                        _: {
+                          question: string;
+                          variants: string[];
+                        },
+                        id: Key | null | undefined
+                      ) => (
+                        <br
+                          key={id}
+                          className={`${
+                            currentQuestion === id && styles.activeBar
+                          }`}
+                        />
+                      )
+                    )}
                   </div>
 
-                  <div
-                    className={styles.form}
-                    onChange={(e: React.FormEvent<HTMLInputElement>) => {
-                      setSelectedAnswer(e.currentTarget.value);
-                    }}
-                  >
-                    {selectedLinkContentData.data.steps[
-                      currentQuestion
-                    ].variants.map((variant: string, id: number) => (
-                      <div key={id} className={styles.formItems}>
-                        <div className={styles.radio}>
-                          <input type="radio" name={"answer"} value={variant} />
-                          <span
-                            className={
-                              selectedAnswer === variant ? styles.active : ""
-                            }
+                  <div className={styles.formContainer}>
+                    <div className={styles.header}>
+                      <h1>{currentQuestion + 1}</h1>
+                      <h1>{entrepreneurQuestions[currentQuestion].question}</h1>
+                    </div>
+                    <form
+                      className={styles.form}
+                      onChange={formOnChangeHandler}
+                    >
+                      {entrepreneurQuestions[currentQuestion].variants.map(
+                        (variant: string, id: number) => (
+                          <div key={id} className={styles.formItems}>
+                            <div className={styles.radio}>
+                              <input
+                                type="radio"
+                                name={"answer"}
+                                value={variant}
+                                id={variant}
+                              />
+                              <span
+                                className={
+                                  selectedAnswer === variant
+                                    ? styles.active
+                                    : ""
+                                }
+                              />
+                            </div>
+
+                            <label className={styles.radioLabel}>
+                              {variant}
+                            </label>
+                          </div>
+                        )
+                      )}
+                      <div className={styles.btnControllers}>
+                        <div className={styles.btn}>
+                          <Button
+                            title={"Previous"}
+                            btnType="gray"
+                            toggleHandler={switchToPevQuestion}
                           />
                         </div>
-
-                        <label className={styles.radioLabel}>{variant}</label>
+                        <div className={styles.btn}>
+                          <Button
+                            title={"Next"}
+                            toggleHandler={switchToNextQuestion}
+                          />
+                        </div>
                       </div>
-                    ))}
-                    <div className={styles.btnControllers}>
-                      <div className={styles.btn}>
-                        <Button title={"Cancel"} btnType="gray" />
-                      </div>
-                      <div className={styles.btn}>
-                        <Button
-                          title={"Next"}
-                          toggleHandler={(e) => {
-                            e.preventDefault();
-                            if (!selectedLinkContentData.data.steps) return;
-                            if (
-                              currentQuestion <=
-                              selectedLinkContentData.data.steps[
-                                currentQuestion
-                              ].variants.length
-                            ) {
-                              setCurrentQuestion((prev) => prev + 1);
-                            }
-                          }}
-                        />
-                      </div>
-                    </div>
+                    </form>
                   </div>
-                </div>
-              </div>
-            )}
+                </>
+              )}
+            </div>
           </div>
         </section>
       </main>
@@ -123,3 +181,28 @@ const Content = () => {
 };
 
 export default Content;
+
+export const getServerSideProps: GetServerSideProps = async (context) => {
+  try {
+    const response = await fetch(
+      `http://localhost:3000/api/discoverWebThree/${context.query.contentName}`
+    );
+
+    const { data } = await response?.json();
+
+    return {
+      props: {
+        currentPage: context.query.contentName,
+        entrepreneurQuestions: data || "",
+      },
+    };
+  } catch (error) {
+    return {
+      props: {
+        currentPage: context.query.contentName,
+        entrepreneurQuestions: null,
+        error: "An error occurred while fetching data.",
+      },
+    };
+  }
+};

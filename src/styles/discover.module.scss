@@ -7,20 +7,19 @@
   flex-direction: column;
   align-items: center;
 
-  & > .navigationContainer{
+  &>.navigationContainer {
     width: 100%;
-    @media (min-width: 864px) and (max-width: 1279px) and (orientation: landscape){
+
+    @media (min-width: 864px) and (max-width: 1279px) and (orientation: landscape) {
       padding-bottom: 50px;
     }
   }
 
 
 
-  @media(min-height: 600px) and (max-height: 668px) and (orientation: portrait) {
-    
-  }
+  @media(min-height: 600px) and (max-height: 668px) and (orientation: portrait) {}
 
-  
+
 
   .sectionContainer {
     width: 100%;
@@ -28,13 +27,15 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    z-index: 0;
 
     @media(min-width: 374px) and (max-width: 767px) and (orientation: portrait) {
       overflow-y: auto;
       height: calc(100vh - 106px);
       align-items: initial;
     }
-    @media (min-width: 864px) and (max-width: 1279px) and (orientation: landscape){
+
+    @media (min-width: 864px) and (max-width: 1279px) and (orientation: landscape) {
       overflow-y: auto;
     }
 
@@ -48,7 +49,11 @@
       padding-top: 35px;
       width: 42.5rem;
       position: relative;
-      @media (min-width: 864px) and (max-width: 1279px) and (orientation: landscape){
+      display: flex;
+      flex-direction: column;
+      
+
+      @media (min-width: 864px) and (max-width: 1279px) and (orientation: landscape) {
         overflow-y: auto;
       }
 
@@ -63,6 +68,13 @@
           font-size: 20px;
           color: $main-text;
         }
+        &>.description,
+        p {
+          font-family: $inter-500;
+          font-size: 16px;
+          line-height: 19px;
+          padding-top: 18px;
+        }
       }
 
       &>.dataContainer {
@@ -76,18 +88,13 @@
           padding-top: 18px;
         }
 
-        &>.progressBar>br {
-          content: "";
-          width: 30%;
-          height: 3px;
-        }
-
         &>.progressBar {
           display: flex;
           position: absolute;
           width: 100%;
           left: 0;
           background: #EDF1FF;
+          height: 3px;
 
           &>.activeBar {
             background: #2B3E9B;
@@ -137,11 +144,15 @@
               justify-content: flex-start;
               align-items: center;
               margin-bottom: 1.5rem;
-
               position: relative;
+              z-index: 1;
 
               &>.radio {
+                cursor: pointer;
+
                 &>.active {
+
+                  background-color: red;
                   position: absolute;
                   content: "";
                   display: block;
@@ -151,9 +162,12 @@
                   background-color: #151F4E;
                   left: 4px;
                   top: 3.6px;
+                  z-index: 1000;
                 }
 
                 input[type="radio"] {
+                  cursor: pointer;
+                  z-index: 99;
                   padding: 0;
                   margin: 0;
                   appearance: none;

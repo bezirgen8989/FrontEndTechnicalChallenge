@@ -1,4 +1,4 @@
-import { SvgIcon } from "../SvgIcons";
+import { IconName, SvgIcon } from "../SvgIcon";
 import styles from "./style.module.scss";
 
 type FormInputProps = {
@@ -6,7 +6,7 @@ type FormInputProps = {
   type?: string;
   label?: string;
   disabled?: boolean;
-  icon?: string;
+  icon?: IconName;
   switchIconType?: () => void;
 };
 
@@ -30,7 +30,7 @@ export const FormInput = ({
         />
         {icon && (
           <div className={styles.iconInto} onClick={switchIconType}>
-            <SvgIcon svgIconType={icon} />
+            <SvgIcon name={icon} />
           </div>
         )}
       </div>

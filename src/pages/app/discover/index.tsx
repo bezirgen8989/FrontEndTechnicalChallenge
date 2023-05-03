@@ -1,6 +1,4 @@
 import Head from "next/head";
-import styles from "../../../styles/discover.module.scss";
-import { AppLayout } from "@/components/AppLayout";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
 

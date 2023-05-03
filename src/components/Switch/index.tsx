@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { SvgIcon } from "../SvgIcons";
+import { SvgIcon } from "../SvgIcon";
 import styles from "./styles.module.scss";
 
 export const Switch = () => {
@@ -14,13 +14,13 @@ export const Switch = () => {
       <div className={styles.switchTexts}>
         <div className={styles.switchItem}>
           <div>
-            <SvgIcon svgIconType="light" />
+            <SvgIcon name="light" />
           </div>
           <div className={styles.text}>Light</div>
         </div>
         <div className={styles.switchItem}>
           <div>
-            <SvgIcon svgIconType="dark" />
+            <SvgIcon name="dark" />
           </div>
           <div className={styles.text}>Dark</div>
         </div>

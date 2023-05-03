@@ -5,7 +5,7 @@ import { useRouter } from "next/router";
 import { useEffect } from "react";
 import Header from "@/components/Header";
 import Link from "next/link";
-import { SvgIcon } from "@/components/SvgIcons";
+import { SvgIcon } from "@/components/SvgIcon";
 import { AppLayout } from "@/components/AppLayout";
 
 const inter = Inter({ subsets: ["latin"] });

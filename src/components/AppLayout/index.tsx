@@ -3,7 +3,7 @@ import { useRouter } from "next/router";
 import { ReactElement, useContext, useEffect, useState } from "react";
 import Header from "@/components/Header";
 import Link from "next/link";
-import { SvgIcon } from "@/components/SvgIcons";
+import { IconName, SvgIcon } from "@/components/SvgIcon";
 import Image from "next/image";
 import { Switch } from "@/components/Switch";
 import { AppContext } from "@/Context";
@@ -97,7 +97,7 @@ export const AppLayout = ({ children }: AppLayoutProps) => {
             tootleMenu || screenType === "desktop"
               ? 0
               : screenType === "tablet"
-              ? "-33%"
+              ? "-40%"
               : "-99%",
         }}
       >
@@ -113,7 +113,7 @@ export const AppLayout = ({ children }: AppLayoutProps) => {
               }`}
             >
               <div className={styles.iconContainer}>
-                <SvgIcon svgIconType={item.iconType} />
+                <SvgIcon name={item.iconType as IconName} />
               </div>
               <Link href={`${item.href}`} onClick={tootleMenuHandlerClose}>
                 {item.linkName}
@@ -139,7 +139,7 @@ export const AppLayout = ({ children }: AppLayoutProps) => {
                 <p>{userData?.email}</p>
               </div>
               <div className={styles.logout} onClick={logout}>
-                <SvgIcon svgIconType="logout" />
+                <SvgIcon name="logout" />
               </div>
             </div>
           </div>
@@ -155,7 +155,7 @@ export const AppLayout = ({ children }: AppLayoutProps) => {
           <div className={styles.navigationContainer}>
             <div className={styles.navigationBlock}>
               <div className={styles.icon}>
-                <SvgIcon svgIconType={currentRoute} />
+                <SvgIcon name={currentRoute as IconName} />
               </div>
               <div className={styles.breadCrumbs}>
                 <h2>{currentNavLinkItem?.linkName}</h2>
@@ -166,7 +166,7 @@ export const AppLayout = ({ children }: AppLayoutProps) => {
           <div className={styles.searchInput}>
             <input type="text" placeholder="Search" />
             <i>
-              <SvgIcon svgIconType="search" />
+              <SvgIcon name="search" />
             </i>
           </div>
         </header>
