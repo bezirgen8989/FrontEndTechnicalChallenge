@@ -2,12 +2,13 @@
 const path = require("path");
 
 const nextConfig = {
+  assetPrefix: "/FrontEndTechnicalChallenge/",
+  basePath: "/FrontEndTechnicalChallenge",
   reactStrictMode: true,
   exportTrailingSlash: true,
   images: {
     loader: "akamai",
     path: "/FrontEndTechnicalChallenge",
-    domains: ["https://bezirgen8989.github.io/FrontEndTechnicalChallenge/"],
     unoptimized: true,
   },
   sassOptions: {
