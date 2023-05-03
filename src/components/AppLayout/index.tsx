@@ -137,7 +137,13 @@ export const AppLayout = ({ children }: AppLayoutProps) => {
               }`}
             >
               <div className={styles.iconContainer}>
-                <SvgIcon name={item.iconType as IconName} />
+                <SvgIcon
+                  name={
+                    currentNavLinkItem?.href !== item.href
+                      ? (item.iconType as IconName)
+                      : (`${item.iconType}_active` as IconName)
+                  }
+                />
               </div>
               <Link href={`${item.href}`} onClick={tootleMenuHandlerClose}>
                 {item.linkName}

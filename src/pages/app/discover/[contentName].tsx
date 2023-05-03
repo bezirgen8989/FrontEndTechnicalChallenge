@@ -31,8 +31,6 @@ const Content = ({ currentPage, entrepreneurQuestions }: ContentProps) => {
     }
   };
 
-  console.log(currentQuestion);
-
   const switchToNextQuestion = async (e: React.MouseEvent<HTMLElement>) => {
     e.preventDefault();
     const questionsLength = entrepreneurQuestions.length - 1;
@@ -73,8 +71,6 @@ const Content = ({ currentPage, entrepreneurQuestions }: ContentProps) => {
       setCurrentQuestion((prev) => prev - 1);
     }
   };
-
-  console.log(currentQuestion);
 
   return (
     <>

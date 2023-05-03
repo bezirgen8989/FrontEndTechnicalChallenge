@@ -8,7 +8,6 @@ const Home = () => {
 
   useEffect(() => {
     const isUserAut = localStorage.getItem("userFormData");
-    console.log(isUserAut);
     if (isUserAut) {
       router.push("app/nodes");
     } else {
@@ -29,17 +28,3 @@ const Home = () => {
 };
 
 export default Home;
-
-export const getInitialProps: GetServerSideProps = async () => {
-  // fetch user specific data from BE
-  const userData = {
-    userAva: "",
-    userName: "",
-    userEmail: "",
-  };
-  return {
-    props: {
-      userData,
-    },
-  };
-};

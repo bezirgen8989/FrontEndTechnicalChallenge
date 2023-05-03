@@ -4,7 +4,13 @@ import { useEffect } from "react";
 const Auth = () => {
   const router = useRouter();
   useEffect(() => {
-    router.push("auth/selectRole");
+    const isUserAut = localStorage.getItem("userFormData");
+
+    if (!isUserAut) {
+      router.push("app/nodes");
+    } else {
+      router.push("auth/selectRole");
+    }
   }, [router]);
 };
 
