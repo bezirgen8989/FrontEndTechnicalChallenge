@@ -1,10 +1,10 @@
-import { SvgIcon } from "../SvgIcon";
+import { IconName, SvgIcon } from "../SvgIcon";
 import styles from "./style.module.scss";
 
 type ButtonProps = {
   title: string;
   disabled?: boolean;
-  icon?: string;
+  icon?: IconName | "";
   toggleHandler?: (e: React.MouseEvent<HTMLElement>) => void;
   btnType?: string;
 };
@@ -24,7 +24,7 @@ export const Button = ({
       disabled={disabled}
       onClick={toggleHandler}
     >
-      {icon && <SvgIcon svgIconType={icon} />}
+      {icon && <SvgIcon name={icon} />}
       <span>{title}</span>
     </button>
   );
