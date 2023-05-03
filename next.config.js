@@ -2,8 +2,8 @@
 const path = require("path");
 
 const nextConfig = {
-  assetPrefix: "/FrontEndTechnicalChallenge/",
-  basePath: "/FrontEndTechnicalChallenge",
+  // assetPrefix: "/FrontEndTechnicalChallenge/",
+  // basePath: "/FrontEndTechnicalChallenge",
   reactStrictMode: true,
   exportTrailingSlash: true,
   images: {
