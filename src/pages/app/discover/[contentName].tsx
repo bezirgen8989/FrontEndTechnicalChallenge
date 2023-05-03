@@ -24,7 +24,7 @@ const Content = ({ currentPage, entrepreneurQuestions }: ContentProps) => {
     (item) => item.id === currentPage
   );
 
-  const formOnChangeHandler = (e: React.FormEvent<HTMLFormElement>) => {
+  const formOnChangeHandler = (e: any) => {
     setSelectedAnswer(e.target.value);
     if (formValidationMsg.length) {
       setFormValidationMsg("");
