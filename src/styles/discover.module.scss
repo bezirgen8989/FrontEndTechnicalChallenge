@@ -27,6 +27,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
     z-index: 0;
 
     @media(min-width: 374px) and (max-width: 767px) and (orientation: portrait) {
@@ -98,6 +99,10 @@
 
           &>.activeBar {
             background: #2B3E9B;
+            height: 3px;
+            display: block;
+            transition: 0.5s ease;
+            content: "";
           }
         }
 
@@ -209,6 +214,14 @@
             }
           }
         }
+      }
+      & > .validationMessage {
+        width: 100%;
+        text-align: center;
+        color: red;
+        font-family: $inter-500;
+        font-size: 16px;
+        height: 25px;
       }
     }
   }

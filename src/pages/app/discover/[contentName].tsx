@@ -26,19 +26,23 @@ const Content = ({ currentPage, entrepreneurQuestions }: ContentProps) => {
 
   const formOnChangeHandler = (e: React.FormEvent<HTMLFormElement>) => {
     setSelectedAnswer(e.target.value);
+    if (formValidationMsg.length) {
+      setFormValidationMsg("");
+    }
   };
+
+  console.log(currentQuestion);
 
   const switchToNextQuestion = async (e: React.MouseEvent<HTMLElement>) => {
     e.preventDefault();
-    const questionsLength =
-      entrepreneurQuestions[currentQuestion].variants.length;
+    const questionsLength = entrepreneurQuestions.length - 1;
 
-    if (currentQuestion <= questionsLength && selectedAnswer) {
+    if (questionsLength > currentQuestion && selectedAnswer) {
+      // debugger;
       setFormAnswers((prev) => [...prev, selectedAnswer]);
       setCurrentQuestion((prev) => prev + 1);
       setSelectedAnswer("");
-    }
-    if (
+    } else if (
       currentQuestion === entrepreneurQuestions.length - 1 &&
       selectedAnswer
     ) {
@@ -56,6 +60,8 @@ const Content = ({ currentPage, entrepreneurQuestions }: ContentProps) => {
       } else {
         setFormValidationMsg(message);
       }
+    } else {
+      setFormValidationMsg("Please select answer");
     }
   };
 
@@ -68,6 +74,8 @@ const Content = ({ currentPage, entrepreneurQuestions }: ContentProps) => {
     }
   };
 
+  console.log(currentQuestion);
+
   return (
     <>
       <Head>
@@ -79,101 +87,104 @@ const Content = ({ currentPage, entrepreneurQuestions }: ContentProps) => {
 
       <main className={styles.discoverMainContainer}>
         <HeaderNavigation headerNavigators={discoverWeb3HeaderNavigators} />
-
-        {reqData ? <h1>DONE</h1> : ""}
-
         <section className={styles.sectionContainer}>
-          <div className={styles.sectionBlocks}>
-            <div className={styles.header}>
-              <div className={styles.title}>
-                {selectedLinkContentData?.data.title}
-              </div>
-              <div className={styles.description}>
-                {selectedLinkContentData?.data.description}
-                <p>
-                  {currentQuestion + 1}/{entrepreneurQuestions.length} Questions
-                  answered
-                </p>
-              </div>
-            </div>
+          {entrepreneurQuestions && (
+            <div className={styles.sectionBlocks}>
+              <div className={styles.header}>
+                <div className={styles.title}>
+                  {selectedLinkContentData?.data.title}
+                </div>
 
-            <div className={styles.dataContainer}>
-              {entrepreneurQuestions && (
-                <>
-                  <div className={styles.progressBar}>
-                    {entrepreneurQuestions.map(
-                      (
-                        _: {
-                          question: string;
-                          variants: string[];
-                        },
-                        id: Key | null | undefined
-                      ) => (
+                <div className={styles.description}>
+                  {selectedLinkContentData?.data.description}
+                  <p>
+                    {currentQuestion + 1}/{entrepreneurQuestions?.length}{" "}
+                    Questions answered
+                  </p>
+                </div>
+              </div>
+
+              {reqData ? (
+                <h1>DONE</h1>
+              ) : (
+                <div className={styles.dataContainer}>
+                  {entrepreneurQuestions && (
+                    <>
+                      <div className={styles.progressBar}>
                         <br
-                          key={id}
-                          className={`${
-                            currentQuestion === id && styles.activeBar
-                          }`}
+                          style={{
+                            width: `${
+                              (100 / entrepreneurQuestions.length + 1) *
+                              (currentQuestion + 1)
+                            }%`,
+                          }}
+                          className={styles.activeBar}
                         />
-                      )
-                    )}
-                  </div>
+                      </div>
 
-                  <div className={styles.formContainer}>
-                    <div className={styles.header}>
-                      <h1>{currentQuestion + 1}</h1>
-                      <h1>{entrepreneurQuestions[currentQuestion].question}</h1>
-                    </div>
-                    <form
-                      className={styles.form}
-                      onChange={formOnChangeHandler}
-                    >
-                      {entrepreneurQuestions[currentQuestion].variants.map(
-                        (variant: string, id: number) => (
-                          <div key={id} className={styles.formItems}>
-                            <div className={styles.radio}>
-                              <input
-                                type="radio"
-                                name={"answer"}
-                                value={variant}
-                                id={variant}
-                              />
-                              <span
-                                className={
-                                  selectedAnswer === variant
-                                    ? styles.active
-                                    : ""
-                                }
+                      <div className={styles.formContainer}>
+                        <div className={styles.header}>
+                          <h1>{currentQuestion + 1}</h1>
+                          <h1>
+                            {entrepreneurQuestions[currentQuestion].question}
+                          </h1>
+                        </div>
+                        <form
+                          className={styles.form}
+                          onChange={formOnChangeHandler}
+                        >
+                          {entrepreneurQuestions[currentQuestion].variants.map(
+                            (variant: string, id: number) => (
+                              <div key={id} className={styles.formItems}>
+                                <div className={styles.radio}>
+                                  <input
+                                    type="radio"
+                                    name={"answer"}
+                                    value={variant}
+                                    id={variant}
+                                  />
+                                  <span
+                                    className={
+                                      selectedAnswer === variant
+                                        ? styles.active
+                                        : ""
+                                    }
+                                  />
+                                </div>
+
+                                <label className={styles.radioLabel}>
+                                  {variant}
+                                </label>
+                              </div>
+                            )
+                          )}
+                          <div className={styles.btnControllers}>
+                            <div className={styles.btn}>
+                              <Button
+                                title={"Previous"}
+                                btnType="gray"
+                                toggleHandler={switchToPevQuestion}
                               />
                             </div>
-
-                            <label className={styles.radioLabel}>
-                              {variant}
-                            </label>
+                            <div className={styles.btn}>
+                              <Button
+                                title={"Next"}
+                                toggleHandler={switchToNextQuestion}
+                              />
+                            </div>
                           </div>
-                        )
-                      )}
-                      <div className={styles.btnControllers}>
-                        <div className={styles.btn}>
-                          <Button
-                            title={"Previous"}
-                            btnType="gray"
-                            toggleHandler={switchToPevQuestion}
-                          />
-                        </div>
-                        <div className={styles.btn}>
-                          <Button
-                            title={"Next"}
-                            toggleHandler={switchToNextQuestion}
-                          />
-                        </div>
+                        </form>
                       </div>
-                    </form>
-                  </div>
-                </>
+                    </>
+                  )}
+                </div>
               )}
+
+              <p className={styles.validationMessage}>
+                {formValidationMsg.length ? formValidationMsg : null}
+              </p>
             </div>
-          </div>
+          )}
         </section>
       </main>
     </>
