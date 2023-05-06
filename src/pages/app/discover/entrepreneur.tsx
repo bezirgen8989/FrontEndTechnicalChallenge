@@ -116,7 +116,7 @@ const Entrepreneur = ({entrepreneurQuestions}: ContentProps) => {
                         <div className={styles.header}>
                           <h1>{currentQuestion + 1}</h1>
                           <h1>
-                            {entrepreneurQuestions[currentQuestion].question}
+                            {entrepreneurQuestions[currentQuestion]?.question}
                           </h1>
                         </div>
                         <form
