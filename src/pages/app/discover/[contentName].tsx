@@ -1,7 +1,7 @@
 import Head from "next/head";
 import styles from "../../../styles/discover.module.scss";
 import { HeaderNavigation } from "@/components/HeaderNavigation";
-import { Key, useContext, useState } from "react";
+import {Key, useContext, useEffect, useState} from "react";
 import { Button } from "@/components/Button";
 import { AppContext } from "@/Context";
 import { GetServerSideProps } from "next";
@@ -189,7 +189,7 @@ const Content = ({ currentPage, entrepreneurQuestions }: ContentProps) => {
 
 export default Content;
 
-export const getInitialProps: GetServerSideProps = async (context) => {
+export const getServerSideProps: GetServerSideProps = async (context) => {
   try {
     const response = await fetch(
       `http://localhost:3000/api/discoverWebThree/${context.query.contentName}`
