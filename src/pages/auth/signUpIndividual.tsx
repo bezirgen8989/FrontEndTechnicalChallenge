@@ -1,3 +1,4 @@
+import React, { useState } from "react";
 import Link from "next/link";
 import styles from "../../styles/signUpIndividual.module.scss";
 import Header from "@/components/Header";
@@ -5,12 +6,9 @@ import { RightSideBlock } from "@/components/RightSideBlock";
 import { FormInput } from "@/components/Input";
 import { Button } from "@/components/Button";
 import Footer from "@/components/Footer";
-import { useState } from "react";
 import { useRouter } from "next/router";
 import { PasswordPower, StatusesMap } from "@/components/PasswordPower";
 import signUpIndividualImage from "../../assets/images/signUpGeneralInfo.png";
-import { GetStaticProps, GetStaticPropsContext, PreviewData } from "next";
-import { ParsedUrlQuery } from "querystring";
 
 type SignInSignUpIndividual = {};
 
@@ -43,7 +41,7 @@ const SignUpIndividual = ({}: SignInSignUpIndividual) => {
 
   const headerElement = () => {
     return (
-      <div className={styles.signUpHeader}>
+      <div>
         <h1>Earn free crypto after making your first purchase.</h1>
         <p>
           *The average Edgevana operator earns $950 a month in incentives.
