@@ -76,8 +76,6 @@ export const AppLayout = ({ children }: AppLayoutProps) => {
     }
   };
 
-  console.log(darkTheme)
-
   const themeHandler = ()=>{
     setDarkTheme(prevState => !prevState);
   }
