@@ -4,7 +4,6 @@ import {HeaderNavigation} from "@/components/HeaderNavigation";
 import {useContext, useState} from "react";
 import {Button} from "@/components/Button";
 import {AppContext} from "@/Context";
-import {GetServerSideProps} from "next";
 
 type ContentProps = {
   currentPage: string;
@@ -188,7 +187,7 @@ const Content = ({currentPage, entrepreneurQuestions}: ContentProps) => {
 
 export default Content;
 
-export const getServerSideProps: GetServerSideProps = async (context) => {
+export const getServerSideProps = async (context) => {
   const {headerCurrentLink} = context.query;
   try {
 
