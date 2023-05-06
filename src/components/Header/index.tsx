@@ -3,7 +3,7 @@ import headerLogoImage from "../../assets/images/Logo.svg";
 import headerLogoImageDark from "../../assets/images/Logo_dark.svg";
 
 type HeaderProps = {
-  isDarkTheme: boolean;
+  isDarkTheme: boolean | undefined;
 }
 
 const Header = ({isDarkTheme}:HeaderProps) => {
