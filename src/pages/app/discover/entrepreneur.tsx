@@ -11,7 +11,7 @@ type ContentProps = {
   entrepreneurQuestions: any;
 };
 
-const Entrepreneur = ({currentPage, entrepreneurQuestions}: ContentProps) => {
+export default function Entrepreneur ({currentPage, entrepreneurQuestions}: ContentProps) {
   const {discoverWeb3HeaderNavigators, discoverWeb3LinksContent} =
     useContext(AppContext);
   const [currentQuestion, setCurrentQuestion] = useState<number>(0);
@@ -213,5 +213,3 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   // Return a valid GetServerSidePropsResult object to avoid "undefined" errors.
   return { props: {} };
 };
-
-export default Entrepreneur;
