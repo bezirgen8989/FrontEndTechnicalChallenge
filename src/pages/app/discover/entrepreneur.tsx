@@ -4,25 +4,20 @@ import {HeaderNavigation} from "@/components/HeaderNavigation";
 import {useContext, useState} from "react";
 import {Button} from "@/components/Button";
 import {AppContext} from "@/Context";
-import {GetServerSideProps} from "next";
+import {GetStaticProps} from "next";
 
 type ContentProps = {
   currentPage: string;
   entrepreneurQuestions: any;
 };
 
-export default function Entrepreneur ({currentPage, entrepreneurQuestions}: ContentProps) {
-  const {discoverWeb3HeaderNavigators, discoverWeb3LinksContent} =
-    useContext(AppContext);
+const Entrepreneur = ({entrepreneurQuestions}: ContentProps) => {
+  const {discoverWeb3HeaderNavigators} = useContext(AppContext);
   const [currentQuestion, setCurrentQuestion] = useState<number>(0);
   const [selectedAnswer, setSelectedAnswer] = useState<string>("");
   const [formAnswers, setFormAnswers] = useState<string[]>([]);
   const [formValidationMsg, setFormValidationMsg] = useState("");
   const [reqData, setReqData] = useState();
-
-  const selectedLinkContentData = discoverWeb3LinksContent.find(
-    (item) => item.id === currentPage
-  );
 
   const formOnChangeHandler = (e: any) => {
     setSelectedAnswer(e.target.value);
@@ -87,11 +82,11 @@ export default function Entrepreneur ({currentPage, entrepreneurQuestions}: Cont
             <div className={styles.sectionBlocks}>
               <div className={styles.header}>
                 <div className={styles.title}>
-                  {selectedLinkContentData?.data.title}
+                  Setup Guide
                 </div>
 
                 <div className={styles.description}>
-                  {selectedLinkContentData?.data.description}
+                  Unlock your highest potential with our personalized guide!
                   <p>
                     {currentQuestion + 1}/{entrepreneurQuestions?.length}{" "}
                     Questions answered
@@ -186,17 +181,13 @@ export default function Entrepreneur ({currentPage, entrepreneurQuestions}: Cont
   );
 };
 
-export const getServerSideProps: GetServerSideProps = async (context) => {
-  const { headerCurrentLink } = context.query;
+export const getStaticProps: GetStaticProps = async ()=>{
   try {
-    const response = await fetch(
-      `http://localhost:3000/api/discoverWebThree/${headerCurrentLink}`
-    );
+    const response = await fetch("http://localhost:3000/api/discoverWebThree/entrepreneur");
     if (response) {
       const { data } = await response.json();
       return {
         props: {
-          currentPage: headerCurrentLink,
           entrepreneurQuestions: data || [],
         },
       };
@@ -204,12 +195,11 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   } catch (error) {
     return {
       props: {
-        currentPage: headerCurrentLink,
         entrepreneurQuestions: [],
         error: "An error occurred while fetching data.",
       },
     };
   }
-  // Return a valid GetServerSidePropsResult object to avoid "undefined" errors.
   return { props: {} };
-};
+}
+export default Entrepreneur;
