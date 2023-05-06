@@ -123,7 +123,7 @@ const Entrepreneur = ({entrepreneurQuestions}: ContentProps) => {
                           className={styles.form}
                           onChange={formOnChangeHandler}
                         >
-                          {entrepreneurQuestions[currentQuestion].variants.map(
+                          {entrepreneurQuestions[currentQuestion]?.variants.map(
                             (variant: string, id: number) => (
                               <div key={id} className={styles.formItems}>
                                 <div className={styles.radio}>
