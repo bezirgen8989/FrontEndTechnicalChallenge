@@ -188,7 +188,7 @@ const Content = ({currentPage, entrepreneurQuestions}: ContentProps) => {
 
 export default Content;
 
-export const getServerSideProps: any = async (context) => {
+export const getServerSideProps: GetServerSideProps = async (context) => {
   const {headerCurrentLink} = context.query;
   try {
 
