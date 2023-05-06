@@ -1,51 +1,48 @@
 @import "../../styles/variables.scss";
 
 .navigationContainer {
+  width: 100%;
+  height: 59px;
+  box-shadow: 0 6px 20px rgba(21, 31, 78, 0.06);
+  border-radius: 8px;
+  background: var(--color-navigation-background);
+  @media(min-width: 374px) and (max-width: 767px) and (orientation: portrait) {
+    overflow-x: auto;
     width: 100%;
-    height: 59px;
-    box-shadow: 0px 6px 20px rgba(21, 31, 78, 0.06);
-    border-radius: 8px;
-    background: #FFFFFF;
+    margin-bottom: 17px;
+  }
 
+  & > nav {
+    margin: 0 25px;
+    display: flex;
+    align-items: center;
+    height: 100%;
     @media(min-width: 374px) and (max-width: 767px) and (orientation: portrait) {
-        overflow-x: auto;
+      left: -30%;
+      width: 98%;
+    }
+
+
+    & > a {
+      padding-right: 2.5rem;
+      font-family: $inter-600;
+      color: var(--link-text-color);
+      height: 100%;
+      display: flex;
+      align-items: center;
+      position: relative;
+      text-decoration: none;
+
+      & > .active {
+        background: linear-gradient(90deg, #2B3E9B 0%, rgba(43, 62, 155, 0) 100%);
+        content: "";
+        display: block;
         width: 100%;
-        margin-bottom: 17px;
+        height: 2px;
+        position: absolute;
+        bottom: 0;
+      }
     }
 
-    &>nav {
-        margin: 0 25px;
-        display: flex;
-        align-items: center;
-        height: 100%;
-        @media(min-width: 374px) and (max-width: 767px) and (orientation: portrait) {
-            left: -30%;
-            width: 98%;
-          }
-
-         
-    
-
-        &>a {
-            padding-right: 2.5rem;
-            font-family: $inter-600;
-            color: $description-text-color;
-            height: 100%;
-            display: flex;
-            align-items: center;
-            position: relative;
-            text-decoration: none;
-
-            &>.active {
-                background: linear-gradient(90deg, #2B3E9B 0%, rgba(43, 62, 155, 0) 100%);
-                content: "";
-                display: block;
-                width: 100%;
-                height: 2px;
-                position: absolute;
-                bottom: 0;
-            }
-        }
-
-    }
+  }
 }

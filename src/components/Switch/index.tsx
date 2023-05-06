@@ -1,12 +1,17 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { SvgIcon } from "../SvgIcon";
 import styles from "./styles.module.scss";
 
-export const Switch = () => {
+type SwitchProps = {
+  onChangeHandler: ()=>void;
+}
+
+export const Switch = ({onChangeHandler}: SwitchProps) => {
   const [checked, setChecked] = useState<boolean>(false);
 
   const switchHandler = () => {
     setChecked((prev) => !prev);
+    onChangeHandler()
   };
 
   return (
@@ -34,7 +39,7 @@ export const Switch = () => {
       />
 
       <span className={styles.switchSlider}>
-        <label className={styles.switchLabel}></label>
+        <label className={styles.switchLabel}/>
       </span>
     </div>
   );

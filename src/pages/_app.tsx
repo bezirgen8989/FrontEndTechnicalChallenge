@@ -1,6 +1,6 @@
 import { AppProvider } from "@/Context";
 import { AppLayout } from "@/components/AppLayout";
-import "@/styles/globals.css";
+import "@/styles/globals.scss";
 import type { AppProps } from "next/app";
 import { useRouter } from "next/router";
 

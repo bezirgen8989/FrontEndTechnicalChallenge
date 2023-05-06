@@ -1,4 +1,4 @@
-// ColorPicker Variables
+// ColorPicker
 $white-color: #FFFFFF;
 $linear-gradient: linear-gradient(90deg, #F2F4FC 0%, #FFFFFF 100%);
 $main-text: #151F4E;
@@ -6,6 +6,10 @@ $description-text-color:  #838AA9;
 $active-item-color: #F3F4F9;
 $button-default-color: #2B3E9B;
 $button-gray-color: #DCDFEF;
+
+// dark mode ColorPicker
+$dark-color: #FFFFFF;
+
 // fonts
 $inter-100: "Inter-Thin";
 $inter-200: "Inter-ExtraLight";
@@ -16,6 +20,7 @@ $inter-600: "Inter-SemiBold";
 $inter-700: "Inter-Bold";
 $inter-800: "Inter-ExtraBold";
 $inter-900: "Inter-Black";
+
 
 $mobile: "max-width: 1024px) and (orientation: portrait), (max-width: 1279px) and (orientation: landscape";
 $tablet: "(min-width: 768px) and (max-width: 1024px) and (orientation: portrait), (min-width: 864px) and (max-width: 1279px) and (orientation: landscape)";

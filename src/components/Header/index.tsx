@@ -1,7 +1,13 @@
 import Image from "next/image";
 import headerLogoImage from "../../assets/images/Logo.svg";
+import headerLogoImageDark from "../../assets/images/Logo_dark.svg";
 
-const Header = () => {
+type HeaderProps = {
+  isDarkTheme: boolean;
+}
+
+const Header = ({isDarkTheme}:HeaderProps) => {
+
   return (
     <>
       <header>
@@ -11,7 +17,7 @@ const Header = () => {
           }}
         >
           <Image
-            src={headerLogoImage}
+            src={!isDarkTheme ? headerLogoImage : headerLogoImageDark}
             style={{
               width: "171px",
               height: "38px",
