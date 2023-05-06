@@ -11,7 +11,7 @@ type ContentProps = {
   entrepreneurQuestions: any;
 };
 
-const Content = ({currentPage, entrepreneurQuestions}: ContentProps) => {
+const Entrepreneur = ({currentPage, entrepreneurQuestions}: ContentProps) => {
   const {discoverWeb3HeaderNavigators, discoverWeb3LinksContent} =
     useContext(AppContext);
   const [currentQuestion, setCurrentQuestion] = useState<number>(0);
@@ -186,35 +186,32 @@ const Content = ({currentPage, entrepreneurQuestions}: ContentProps) => {
   );
 };
 
-export default Content;
+export default Entrepreneur;
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
-  const {headerCurrentLink} = context.query;
+  const { headerCurrentLink } = context.query;
   try {
-
     const response = await fetch(
       `http://localhost:3000/api/discoverWebThree/${headerCurrentLink}`
     );
-
     if (response) {
-      const {data} = await response?.json();
-
+      const { data } = await response.json();
       return {
         props: {
           currentPage: headerCurrentLink,
-          entrepreneurQuestions: data || null,
+          entrepreneurQuestions: data || [],
         },
       };
     }
-
   } catch (error) {
-    console.log(error)
     return {
       props: {
         currentPage: headerCurrentLink,
-        entrepreneurQuestions: null,
+        entrepreneurQuestions: [],
         error: "An error occurred while fetching data.",
       },
     };
   }
+  // Return a valid GetServerSidePropsResult object to avoid "undefined" errors.
+  return { props: {} };
 };

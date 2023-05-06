@@ -267,6 +267,7 @@
 
     &>.childrenContent {
       display: flex;
+      flex-direction: column;
       margin: 1.4rem;
       height: 80%;
       overflow: hidden;
