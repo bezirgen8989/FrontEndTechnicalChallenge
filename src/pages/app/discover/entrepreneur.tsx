@@ -186,8 +186,6 @@ const Entrepreneur = ({currentPage, entrepreneurQuestions}: ContentProps) => {
   );
 };
 
-export default Entrepreneur;
-
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const { headerCurrentLink } = context.query;
   try {
@@ -215,3 +213,5 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   // Return a valid GetServerSidePropsResult object to avoid "undefined" errors.
   return { props: {} };
 };
+
+export default Entrepreneur;
