@@ -86,7 +86,7 @@ export default async function getEntrepreneurToolkit(
 ) {
   if (req.method !== "GET") {
     res.status(405).send({ message: "Method is not allowed for sign up" });
-    return;
+    return null;
   }
 
   // Return a success message with data
