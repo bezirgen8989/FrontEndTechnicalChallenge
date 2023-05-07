@@ -1,17 +1,19 @@
 @import "../../styles/variables.scss";
 
 .footerContainer {
-    text-align: center;
-    width: 100%;
-    position: absolute;
-    bottom: 0;
-    & > .footerBlock{
-        margin: 32px;
-        & > h5 {
-            font-family: $inter-400;
-            font-size: 12px;
-            color: var(--header-text-color);
-        }
+  text-align: center;
+  width: 100%;
+  position: absolute;
+  bottom: 0;
 
+  & > .footerBlock {
+    margin: 32px;
+
+    & > h5 {
+      font-family: $inter-400;
+      font-size: 12px;
+      color: var(--header-text-color);
     }
+
+  }
 }

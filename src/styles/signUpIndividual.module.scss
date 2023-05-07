@@ -139,6 +139,11 @@
         
       }
     }
+    & > footer{
+      @media(min-width: 374px) and (max-width: 767px) and (orientation: portrait) {
+        position: relative;
+      }
+    }
     
   }
   & > .rightSideBlock{
