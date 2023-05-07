@@ -72,7 +72,7 @@ const SignUpIndividual = ({}: SignInSignUpIndividual) => {
             "Content-Type": "application/json",
           },
         });
-        if (response.status > 400 && response.status > 500) {
+        if (response.status > 400 || response.status > 500) {
           setValidationMessage(response.statusText);
         } else {
           localStorage.setItem("userFormData", JSON.stringify(formData));
