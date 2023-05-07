@@ -182,24 +182,14 @@ const Entrepreneur = ({entrepreneurQuestions}: ContentProps) => {
 };
 
 export const getStaticProps: GetStaticProps = async ()=>{
-  try {
-    const response = await fetch("http://localhost:3000/api/discoverWebThree/entrepreneur");
-    if (response) {
-      const { data } = await response.json();
-      return {
-        props: {
-          entrepreneurQuestions: data || [],
-        },
-      };
-    }
-  } catch (error) {
+  const response = await fetch("http://localhost:3000/api/discoverWebThree/entrepreneur");
+  if (response) {
+    const { data } = await response.json();
     return {
       props: {
-        entrepreneurQuestions: [],
-        error: "An error occurred while fetching data.",
+        entrepreneurQuestions: data || [],
       },
     };
   }
-  return { props: {} };
 }
 export default Entrepreneur;
