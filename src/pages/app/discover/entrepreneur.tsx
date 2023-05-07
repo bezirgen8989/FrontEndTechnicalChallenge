@@ -181,16 +181,16 @@ const Entrepreneur = ({entrepreneurQuestions}: ContentProps) => {
   );
 };
 
-export const getStaticProps: GetStaticProps = async ()=>{
+export const getStaticProps: GetStaticProps = async () => {
   const response = await fetch("http://localhost:3000/api/discoverWebThree/entrepreneur");
-  if (response) {
-    const { data } = await response.json();
-    return {
-      props: {
-        entrepreneurQuestions: data || [],
-        fulfilled: false
-      },
-    };
-  }
+
+  const {data} = await response.json();
+  return {
+    props: {
+      entrepreneurQuestions: data || [],
+      fulfilled: false
+    },
+  };
+
 }
 export default Entrepreneur;
