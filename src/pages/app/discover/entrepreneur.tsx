@@ -182,7 +182,8 @@ const Entrepreneur = ({entrepreneurQuestions}: ContentProps) => {
 };
 
 export const getStaticProps: GetStaticProps = async () => {
-  const response = await fetch("http://localhost:3000/api/discoverWebThree/entrepreneur");
+  const baseUrl = process.env.NODE_ENV === 'development' ? "http://localhost:3000/" : "https://bez-front-end-challenge.herokuapp.com/";
+  const response = await fetch(`${baseUrl}/api/discoverWebThree/entrepreneur`);
 
   const {data} = await response.json();
   return {
