@@ -34,7 +34,6 @@ export const FormInput = ({
           </div>
         )}
       </div>
-      <p></p>
     </div>
   );
 };

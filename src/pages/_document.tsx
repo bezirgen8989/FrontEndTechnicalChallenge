@@ -34,7 +34,7 @@ function setInitialColorMode() {
     }
 
     // Check the current preference
-    const preference = window.matchMedia('(prefers-color-scheme: dark)');
+    const preference = window.matchMedia('(prefers-color-scheme: light)');
     const hasMediaQueryPreference = true;
 
     if (hasMediaQueryPreference) {

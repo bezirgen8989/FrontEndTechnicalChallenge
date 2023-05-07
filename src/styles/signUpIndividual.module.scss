@@ -32,6 +32,12 @@
         &>.formHeaderText {
           width: 45%;
           padding-bottom: 2rem;
+          & > h1 {
+            color: var(--header-text-color);
+          }
+          & > p {
+            color: var(--text-text-color);
+          }
           @media(min-width: 300px) and (max-width: 767px) and (orientation: portrait) {
             width: 100%;
             padding-top: 50px;
@@ -118,15 +124,15 @@
           }
   
           &>.doubleInput {
-            &>input {
-              width: 50% !important;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            & > div {
+              width: 48%;
             }
-  
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            grid-template-rows: 1fr;
-            grid-column-gap: 30px;
-            grid-row-gap: 0px;
+            & > div > div > input{
+              width: 95.7%;
+            }
           }
         }
   

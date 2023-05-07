@@ -1,12 +1,14 @@
 @import "../../styles/variables.scss";
 
 .inputContainer {
+  display: flex;
+  flex-direction: column;
   & > label {
     font-family: $inter-600;
     color: $main-text;
-    padding-bottom: 0.5rem;
     margin: 0;
     width: 100%;
+    padding-bottom: 8px;
 
     @media(max-width: 1024px) and (orientation: portrait),
     (max-width: 1279px) and (orientation: landscape) {
@@ -19,7 +21,7 @@
   }
 
   & > div {
-    width: 100%;
+    //width: 100%;
     position: relative;
 
     .password {
@@ -39,8 +41,8 @@
       height: 40px;
       border: none;
       border-radius: 8px;
-      width: 100%;
-        padding-left: 15px;
+      width: 98%;
+      padding-left: 15px;
     }
   }
 }

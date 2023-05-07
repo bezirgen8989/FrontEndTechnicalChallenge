@@ -1,6 +1,6 @@
 # Frontend Technical Challenge - Next.js
 
-This is a technical challenge project for a Frontend Developer position using Next.js. The project is hosted on GitHub Pages, and you can view it at https://bezirgen8989.github.io/FrontEndTechnicalChallenge.
+This is a technical challenge project for a Frontend Developer position using Next.js. The project is hosted on GitHub Pages, and you can view it at https://bez-front-end-challenge.herokuapp.com/.
 
 ## Getting Started
 
@@ -17,5 +17,4 @@ To run this project locally, you'll need to follow these steps:
 To deploy this project to GitHub Pages, you can follow these steps:
 
 1. Push your changes to the `main` branch.
-2. And watch the progress on repo Actions link ( on my side it https://github.com/bezirgen8989/FrontEndTechnicalChallenge/actions)
-3. Then if build and deploy process successfully check the result
+2. Then if build and deploy process successfully check the result

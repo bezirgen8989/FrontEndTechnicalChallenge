@@ -22,12 +22,13 @@
 	.cardInfoContainer{
 		width: 80%;
 		& > h1{
-			font-family: 'Inter-SemiBold';
+			font-family: $inter-600;
 			font-size: 16px;
 			color: $main-text;
+			margin: 0;
 		}
 		&> p {
-			font-family: 'Inter-Regular';
+			font-family: $inter-400;
 			color: $description-text-color;
 			font-size: 14px;
 			width: 100%;
