@@ -12,10 +12,10 @@ type UserData = {
 
 export default async function handler(
   req: NextApiRequest,
-  res: NextApiResponse<{ message: string; data?: UserData }>
+  res: NextApiResponse<{ message: string; data?: any }>
 ) {
   if (req.method !== "POST") {
-    res.status(405).send({ message: "Method is not allowed for sign up" });
+    res.status(405).send({ message: "Method is not allowed for sign up", data: {req, res} });
     return;
   }
 
