@@ -105,7 +105,7 @@ const Entrepreneur = ({entrepreneurQuestions}: ContentProps) => {
                           style={{
                             width: `${
                               (100 / entrepreneurQuestions.length + 1) *
-                              (currentQuestion + 1)
+                              (currentQuestion)
                             }%`,
                           }}
                           className={styles.activeBar}
