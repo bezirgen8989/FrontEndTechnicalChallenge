@@ -169,10 +169,11 @@ const Entrepreneur = ({entrepreneurQuestions}: ContentProps) => {
                   )}
                 </div>
               )}
-
-              <p className={styles.validationMessage}>
-                {formValidationMsg.length ? formValidationMsg : null}
-              </p>
+              {
+                formValidationMsg.length
+                  ? <p className={styles.validationMessage}>{formValidationMsg}</p>
+                  : null
+              }
             </div>
           )}
         </section>
