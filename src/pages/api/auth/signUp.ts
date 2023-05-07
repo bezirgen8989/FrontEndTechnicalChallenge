@@ -1,7 +1,7 @@
 import { NextApiRequest, NextApiResponse } from "next";
 
 type UserData = {
-  firstNam: string;
+  firstName: string;
   lastName: string;
   userName: string;
   email: string;
@@ -23,15 +23,15 @@ export default async function handler(
 
   // Validate the user data
   if (
-    !userData.firstNam ||
-    !userData.lastName ||
-    !userData.userName ||
-    !userData.email ||
-    !userData.password ||
-    !userData.selectedRole ||
+    !userData.firstName.length ||
+    !userData.lastName.length ||
+    !userData.userName.length ||
+    !userData.email.length ||
+    !userData.password.length ||
+    !userData.selectedRole.length ||
     !userData.agreement
   ) {
-    res.status(400).send({ message: "Please fill in all the required fields" });
+    res.status(400).send({ message: "Please fill in all required fields"});
     return;
   }
 
