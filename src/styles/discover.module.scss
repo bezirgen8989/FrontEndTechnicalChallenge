@@ -146,23 +146,29 @@
                 font-size: 16px;
                 display: flex;
                 justify-content: flex-start;
-                align-items: center;
                 width: 100%;
+                cursor: pointer;
+                align-items: self-end;
 
                 & > .radio {
                   cursor: pointer;
+                  display: flex;
+                  justify-content: center;
+                  align-items: center;
+                  position: relative;
 
                   & > .active {
-                    position: absolute;
                     content: "";
                     display: block;
                     width: 12.5px;
                     height: 12.5px;
-                    border-radius: 50%;
-                    background-color: #151F4E;
-                    left: 8.3px;
-                    top: 8.5px;
                     z-index: 1000;
+                    background-color: #151F4E;
+                    border-radius: 50%;
+                    position: absolute;
+                    left: 8.8px;
+                    top: 8.98px;
+
                   }
 
                   & > input {

@@ -31,7 +31,6 @@ export const AppLayout = ({ children }: AppLayoutProps) => {
     screenType,
     theme,
   } = useContext(AppContext);
-  // const [darkTheme, setDarkTheme] = useState<boolean | undefined>(undefined);
   const [startX, setStartX] = useState<number | null>(null);
 
   const swipeRightHandler = () => {

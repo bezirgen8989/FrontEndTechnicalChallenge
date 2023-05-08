@@ -7,13 +7,15 @@
   display: flex;
   position: relative;
   z-index: 10000;
-  &>.appContainerNav {
+
+  & > .appContainerNav {
     width: 25%;
     background-color: var(--color-navigation-background);
     height: 100%;
     filter: var(--filter-shadow);
     @media(max-width: 1024px) and (orientation: portrait),
     (max-width: 1279px) and (orientation: landscape) {
+      filter: none;
       position: absolute;
       height: 100%;
       left: -30%;
@@ -23,6 +25,7 @@
     }
 
     @media(min-width: 374px) and (max-width: 767px) and (orientation: portrait) {
+      filter: none;
       left: -30%;
       width: 98%;
     }
@@ -31,9 +34,8 @@
       width: 96%;
     }
 
-    
 
-    &>.navigationContainer {
+    & > .navigationContainer {
       @media(min-width: 374px) and (max-width: 767px) and (orientation: portrait) {
         padding-top: 30px;
       }
@@ -43,7 +45,7 @@
       padding-top: 85px;
       padding-left: 28px;
 
-      &>.navigationLink {
+      & > .navigationLink {
         width: 90%;
         height: 48px;
         align-items: center;
@@ -51,13 +53,15 @@
         text-decoration: none;
         border-radius: 6px;
         color: var(--link-text-color);
+
         &:hover {
           transition: 0.5s ease-in-out;
           -webkit-box-shadow: 0 13px 17px -7px rgba(99, 187, 255, 0.17);
           -moz-box-shadow: 0 13px 17px -7px rgba(99, 187, 255, 0.17);
           box-shadow: 0 13px 17px -7px rgba(99, 187, 255, 0.17);
         }
-        &>.iconContainer {
+
+        & > .iconContainer {
           padding-right: 22px;
         }
 
@@ -69,15 +73,16 @@
           margin-bottom: 1rem;
         }
       }
-      &>.activeLink {
+
+      & > .activeLink {
         background: linear-gradient(267.08deg, #2B3E9B -4.96%, #1E328E 100%);
         border-radius: 6px;
         align-items: center;
         color: var(--active-link-text-color);
 
-        &>.iconContainer {
-          &>div {
-            &>svg {
+        & > .iconContainer {
+          & > div {
+            & > svg {
               path {
                 fill: #FFFFFF;
                 fill-opacity: 1;
@@ -89,7 +94,7 @@
       }
     }
 
-    &>.userSettings {
+    & > .userSettings {
       @media(min-width: 374px) and (max-width: 767px) and (orientation: portrait) {
         width: 83%;
       }
@@ -99,22 +104,22 @@
       position: absolute;
       bottom: 32px;
 
-      &>.userData {
+      & > .userData {
         display: flex;
         justify-content: space-evenly;
         padding-bottom: 1.8rem;
 
-        &>.userImage {
+        & > .userImage {
           padding-right: 0.6rem;
         }
 
-        &>.userInfo {
+        & > .userInfo {
           display: flex;
           justify-content: space-between;
           width: 100%;
 
-          &>.info {
-            &>p {
+          & > .info {
+            & > p {
               margin: 0;
               padding: 0 0 5px;
 
@@ -134,14 +139,14 @@
             }
           }
 
-          &>.logout {
+          & > .logout {
             cursor: pointer;
           }
         }
       }
     }
 
-    &>.navMenuMobile {
+    & > .navMenuMobile {
       display: none;
 
       @media (max-width: 1024px) and (orientation: portrait),
@@ -161,17 +166,17 @@
     }
   }
 
-  &>.section {
+  & > .section {
     width: 100%;
     overflow: hidden;
 
-    &>.header {
+    & > .header {
       display: flex;
       margin: 26px;
       justify-content: space-between;
       align-items: center;
 
-      &>.searchInput {
+      & > .searchInput {
         position: relative;
         width: 12%;
 
@@ -180,7 +185,7 @@
           width: 30%;
         }
 
-        &>input {
+        & > input {
           border-radius: 8px;
           border: 1px solid #B9BFD9;
           height: 51px;
@@ -206,11 +211,11 @@
             @media(min-width: 374px) and (max-width: 767px) and (orientation: portrait) {
               color: transparent;
             }
-           
+
           }
         }
 
-        &>i {
+        & > i {
           position: absolute;
           left: 10px;
           bottom: 30%;
@@ -223,13 +228,13 @@
 
       }
 
-      &>.navigationContainer {
-        &>.navigationBlock {
+      & > .navigationContainer {
+        & > .navigationBlock {
           display: flex;
           justify-content: center;
           align-items: center;
 
-          &>.icon {
+          & > .icon {
             display: flex;
             justify-content: center;
             align-items: center;
@@ -239,14 +244,14 @@
             border-radius: 50%;
           }
 
-          &>.breadCrumbs {
+          & > .breadCrumbs {
             display: flex;
             flex-direction: column;
             justify-content: center;
             padding-left: 15px;
             padding-top: 5px;
 
-            &>h2 {
+            & > h2 {
               font-family: $inter-600;
               font-size: 20px;
               line-height: 24px;
@@ -254,7 +259,8 @@
               margin: 0;
 
             }
-            &>div{
+
+            & > div {
               color: var(--header-text-color);
             }
           }
@@ -262,7 +268,7 @@
       }
     }
 
-    &>.childrenContent {
+    & > .childrenContent {
       display: flex;
       flex-direction: column;
       margin: 1.4rem;

@@ -76,7 +76,8 @@ export const AppProvider = ({children}: { children: ReactElement }) => {
     }
     setThemeValue(isDarkMode);
 
-    window.addEventListener("resize", () => {
+
+    const resizeHandler = () => {
       if (window.innerWidth > 600 && window.innerWidth < 767) {
         setScreenSize("mobile");
 
@@ -87,7 +88,10 @@ export const AppProvider = ({children}: { children: ReactElement }) => {
       if (window.innerWidth > 1100) {
         setScreenSize("desktop");
       }
-    });
+    }
+
+    window.addEventListener("resize", resizeHandler);
+    return()=> window.removeEventListener("resize", resizeHandler)
   }, []);
 
   return (
