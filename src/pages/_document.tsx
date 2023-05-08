@@ -30,22 +30,9 @@ function setInitialColorMode() {
     if(persistedPreferenceMode){
       return persistedPreferenceMode;
     }else{
+      window.localStorage.setItem("theme", "light")
       return "light";
     }
-    // const hasPersistedPreference = typeof persistedPreferenceMode === 'string';
-    // if (hasPersistedPreference) {
-    //   return persistedPreferenceMode;
-    // }
-    //
-    // // Check the current preference
-    // const preference = window.matchMedia('(prefers-color-scheme: light)');
-    // const hasMediaQueryPreference = true;
-
-    // if (hasMediaQueryPreference) {
-    //   return preference.matches ? 'light' : 'dark';
-    // }
-    //
-    // return 'light';
   }
 
   const currentColorMode = getInitialColorMode();

@@ -41,7 +41,7 @@ const SignUpIndividual = ({}: SignInSignUpIndividual) => {
 
   const headerElement = () => {
     return (
-      <div>
+      <div className={styles.rightSideHeaderContainer}>
         <h1>Earn free crypto after making your first purchase.</h1>
         <p>
           *The average Edgevana operator earns $950 a month in incentives.

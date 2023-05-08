@@ -29,16 +29,6 @@ export const entrepreneurToolkitQuestions = [
     ],
   },
   {
-    question: "Question 2?",
-    variants: [
-      "variants 1",
-      "variants 2",
-      "variants 3",
-      "variants 4",
-      "variants 5",
-    ],
-  },
-  {
     question: "Question 3?",
     variants: [
       "variants 1",
@@ -70,6 +60,16 @@ export const entrepreneurToolkitQuestions = [
   },
   {
     question: "Question 6?",
+    variants: [
+      "variants 1",
+      "variants 2",
+      "variants 3",
+      "variants 4",
+      "variants 5",
+    ],
+  },
+  {
+    question: "Question 7?",
     variants: [
       "variants 1",
       "variants 2",

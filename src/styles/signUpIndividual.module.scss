@@ -3,6 +3,7 @@
 .signUpIndividualContainer {
   display: flex;
   height: 100vh;
+  background: var(--color-navigation-background);
 
   &>.formContainer {
     position: relative;
@@ -147,12 +148,21 @@
     
   }
   & > .rightSideBlock{
-    background: $linear-gradient;
+    background: var(--right-side-bg-color);
     width: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
     padding-left: 50px;
+    & > div > .rightSideHeaderContainer{
+      & > h1 {
+        color: var(--header-text-color);
+      }
+      & > p {
+        color: var(--text-text-color);
+      }
+
+    }
     @media(min-width: 300px) and (max-width: 767px) and (orientation: portrait) {
       display: none;
     }

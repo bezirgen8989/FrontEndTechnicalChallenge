@@ -5,10 +5,10 @@
   flex-direction: column;
   & > label {
     font-family: $inter-600;
-    color: $main-text;
     margin: 0;
     width: 100%;
     padding-bottom: 8px;
+    color: var(--header-text-color);
 
     @media(max-width: 1024px) and (orientation: portrait),
     (max-width: 1279px) and (orientation: landscape) {
@@ -38,10 +38,10 @@
     & > input {
       all: unset;
       background-color: #f2f2f2;
-      height: 40px;
       border: none;
       border-radius: 8px;
       width: 98%;
+      height: 52px;
       padding-left: 15px;
     }
   }

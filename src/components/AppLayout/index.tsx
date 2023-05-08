@@ -10,7 +10,6 @@ import {AppContext} from "@/Context";
 import testUserAvatar from "../../assets/images/testImage.png";
 import {HeaderNavigation} from "@/components/HeaderNavigation";
 import Breadcrumbs from "@/components/BreadCrumbs";
-import {LinksWithQuery} from "@/types/types";
 
 type AppLayoutProps = {
   children?: ReactElement;
@@ -100,7 +99,12 @@ export const AppLayout = ({children}: AppLayoutProps) => {
   );
 
   const logout = () => {
-    localStorage.clear();
+    for (let i = 0; i < localStorage.length; i++) {
+      const key = localStorage.key(i);
+      if (key && key !== "theme") {
+        localStorage.removeItem(key);
+      }
+    }
     router.push("/");
   };
 
@@ -135,7 +139,7 @@ export const AppLayout = ({children}: AppLayoutProps) => {
                 : "-99%",
         }}
       >
-        <Header isDarkTheme={theme.themeValue}/>
+        <Header/>
         <div className={styles.navigationContainer}>
           {navigationLinks.map((item) => (
             <Link
@@ -212,7 +216,8 @@ export const AppLayout = ({children}: AppLayoutProps) => {
         </header>
         <div className={styles.childrenContent}>
           {
-            appContainerHeaderLinks && <HeaderNavigation headerNavigators={appContainerHeaderLinks[currentAppRoute]}/>
+            appContainerHeaderLinks[currentAppRoute]
+              && <HeaderNavigation headerNavigators={appContainerHeaderLinks[currentAppRoute]}/>
           }
           {children}
         </div>

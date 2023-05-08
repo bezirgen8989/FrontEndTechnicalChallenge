@@ -3,6 +3,7 @@
 .signInContainer {
   display: flex;
   height: 100vh;
+  background: var(--color-navigation-background);
 
   &>.formContainer {
     position: relative;
@@ -36,6 +37,7 @@
         &>.formHeaderText {
           width: 45%;
           padding-bottom: 2rem;
+          color: var(--header-text-color);
           @media(min-width: 300px) and (max-width: 767px) and (orientation: portrait) {
             width: 100%;
             padding-top: 50px;
@@ -70,12 +72,15 @@
             padding-bottom: 1.2rem;
           }
         }
+        & > p{
+          color: var(--text-text-color);
+        }
       }
     }
 
   }
   & > .rightSideBlock{
-    background: $linear-gradient;
+    background: var(--color-background);
     width: 50%;
     display: flex;
     justify-content: center;
@@ -89,6 +94,15 @@
       img {
         width: 160% !important;
       }
+    }
+    & > div > .rightSideHeaderContainer{
+      & > h1 {
+        color: var(--header-text-color);
+      }
+      & > p {
+        color: var(--text-text-color);
+      }
+
     }
   }
 }

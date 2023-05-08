@@ -1,12 +1,13 @@
 import Image from "next/image";
 import headerLogoImage from "../../assets/images/Logo.svg";
 import headerLogoImageDark from "../../assets/images/Logo_dark.svg";
+import {useContext} from "react";
+import {AppContext} from "@/Context";
 
-type HeaderProps = {
-  isDarkTheme?: boolean | undefined;
-}
+type HeaderProps = {}
 
-const Header = ({isDarkTheme}:HeaderProps) => {
+const Header = ({}:HeaderProps) => {
+  const {theme} = useContext(AppContext);
 
   return (
     <>
@@ -17,7 +18,7 @@ const Header = ({isDarkTheme}:HeaderProps) => {
           }}
         >
           <Image
-            src={!isDarkTheme ? headerLogoImage : headerLogoImageDark}
+            src={!theme.themeValue ? headerLogoImage : headerLogoImageDark}
             style={{
               width: "171px",
               height: "38px",

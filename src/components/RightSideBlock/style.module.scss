@@ -1,7 +1,7 @@
 @import "../../styles/variables.scss";
 
 .imageContainer{
-    background: $linear-gradient;
+    background-color: var(--color-background);
     overflow: hidden;
     display: flex;
     flex-direction: column;
@@ -23,7 +23,6 @@
 }
 
 .imageContainerCenter{
-    background: $linear-gradient;
     overflow: hidden;
     display: flex;
     flex-direction: column;
