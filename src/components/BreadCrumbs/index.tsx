@@ -6,8 +6,6 @@ const Breadcrumbs = () => {
   const router = useRouter();
   const pathSegments = router.asPath.split('/').filter(segment => segment !== '' && segment !== "app");
 
-  console.log(pathSegments)
-
   const breadCrumbsNames = {
     overview: "Overview",
     projects: "Projects",
