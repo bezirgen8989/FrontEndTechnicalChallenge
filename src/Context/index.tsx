@@ -1,5 +1,6 @@
-import { LinksWithQuery, rolesType } from "@/types/types";
-import { ReactElement, createContext, useEffect, useState } from "react";
+import {LinksWithQuery, rolesType} from "@/types/types";
+import {createContext, ReactElement, useEffect, useState} from "react";
+import {discoverWeb3HeaderNavigators, discoverWeb3LinksContent, roles} from "@/Context/db";
 
 type DiscoverWeb3Links = {
   id: string;
@@ -21,21 +22,33 @@ type AppContextProps = {
   discoverWeb3HeaderNavigators: LinksWithQuery[];
   discoverWeb3LinksContent: DiscoverWeb3Links[];
   roles: rolesType[];
+  theme: {
+    themeValue: boolean;
+    setThemeValue: () => void
+  };
 };
 
 export const AppContext = createContext<AppContextProps>({
   tootleMenu: false,
   screenType: "",
-  tootleMenuHandlerOpen: () => {},
-  tootleMenuHandlerClose: () => {},
+  tootleMenuHandlerOpen: () => {
+  },
+  tootleMenuHandlerClose: () => {
+  },
   discoverWeb3HeaderNavigators: [],
   discoverWeb3LinksContent: [],
   roles: [],
+  theme: {
+    themeValue: false,
+    setThemeValue: () => {
+    },
+  },
 });
 
-export const AppProvider = ({ children }: { children: ReactElement }) => {
+export const AppProvider = ({children}: { children: ReactElement }) => {
   const [isMenuInScreen, setIsMenuInScreen] = useState<boolean>(false);
   const [screenSize, setScreenSize] = useState<string>("");
+  const [themeValue, setThemeValue] = useState<boolean>(false);
 
   const tootleMenuHandlerOpen = () => {
     setIsMenuInScreen(true);
@@ -44,7 +57,22 @@ export const AppProvider = ({ children }: { children: ReactElement }) => {
     setIsMenuInScreen(false);
   };
 
+  const themeHandler = () => {
+    const theme = themeValue ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', theme);
+    window.localStorage.setItem('theme', theme);
+    setThemeValue(!themeValue);
+  }
+
   useEffect(() => {
+    const selectedTheme = localStorage.getItem("theme");
+    const isDarkMode = selectedTheme === 'dark';
+
+    if (selectedTheme != null) {
+      document.documentElement.setAttribute('data-theme', selectedTheme);
+    }
+    setThemeValue(isDarkMode);
+
     window.addEventListener("resize", () => {
       if (window.innerWidth > 600 && window.innerWidth < 767) {
         setScreenSize("mobile");
@@ -58,74 +86,6 @@ export const AppProvider = ({ children }: { children: ReactElement }) => {
     });
   }, []);
 
-  const discoverWeb3HeaderNavigators = [
-    {
-      href: "/app/discover/overview",
-      linkName: "Overview",
-      query: { headerCurrentLink: "overview" },
-    },
-    {
-      href: "/app/discover/projects",
-      linkName: "Projects",
-      query: { headerCurrentLink: "projects" },
-    },
-    {
-      href: "/app/discover/events",
-      linkName: "Events",
-      query: { headerCurrentLink: "events" },
-    },
-    {
-      href: "/app/discover/news",
-      linkName: "News",
-      query: { headerCurrentLink: "news" },
-    },
-    {
-      href: "/app/discover/developer",
-      linkName: "Developer Toolkit",
-      query: { headerCurrentLink: "developer" },
-    },
-    {
-      href: "/app/discover/entrepreneur",
-      linkName: "Entrepreneur Toolkit",
-      query: { headerCurrentLink: "entrepreneur" },
-    },
-  ];
-
-  const roles = [
-    {
-      id: "Individual",
-      title: "Individual",
-      description:
-        "For individuals who want to participate, develop or build with a click of a button.",
-      icon: "individual",
-      status: false,
-    },
-    {
-      id: "Business",
-      title: "Business",
-      description:
-        "For companies and institutions who need access to our suite of tools and real-time insights to manage and run their operations.",
-      icon: "business",
-      status: false,
-    },
-  ];
-
-  const discoverWeb3LinksContent = [
-    { id: "overview", data: { title: "Overview", description: "" } },
-    { id: "projects", data: { title: "Projects", description: "" } },
-    { id: "events", data: { title: "Events", description: "" } },
-    { id: "news", data: { title: "News", description: "" } },
-    { id: "developer", data: { title: "Developer", description: "" } },
-    {
-      id: "entrepreneur",
-      data: {
-        title: "Setup Guide",
-        description:
-          "Unlock your highest potential with our personalized guide!",
-      },
-    },
-  ];
-
   return (
     <AppContext.Provider
       value={{
@@ -136,6 +96,10 @@ export const AppProvider = ({ children }: { children: ReactElement }) => {
         discoverWeb3HeaderNavigators,
         discoverWeb3LinksContent,
         roles,
+        theme: {
+          themeValue,
+          setThemeValue: themeHandler,
+        },
       }}
     >
       {children}

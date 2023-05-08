@@ -75,7 +75,7 @@ const Entrepreneur = ({entrepreneurQuestions}: ContentProps) => {
         <meta name="viewport" content="width=device-width, initial-scale=1"/>
       </Head>
 
-      <main className={styles.discoverMainContainer}>
+      <main className={styles.entrepreneurContainer}>
         <HeaderNavigation headerNavigators={discoverWeb3HeaderNavigators}/>
         <section className={styles.sectionContainer}>
           {entrepreneurQuestions && (
@@ -164,16 +164,17 @@ const Entrepreneur = ({entrepreneurQuestions}: ContentProps) => {
                             </div>
                           </div>
                         </form>
+                        {
+                          formValidationMsg.length
+                            ? <p className={styles.validationMessage}>{formValidationMsg}</p>
+                            : null
+                        }
                       </div>
                     </>
                   )}
+
                 </div>
               )}
-              {
-                formValidationMsg.length
-                  ? <p className={styles.validationMessage}>{formValidationMsg}</p>
-                  : null
-              }
             </div>
           )}
         </section>

@@ -28,7 +28,6 @@ function setInitialColorMode() {
   function getInitialColorMode() {
     const persistedPreferenceMode = window.localStorage.getItem('theme');
     const hasPersistedPreference = typeof persistedPreferenceMode === 'string';
-
     if (hasPersistedPreference) {
       return persistedPreferenceMode;
     }

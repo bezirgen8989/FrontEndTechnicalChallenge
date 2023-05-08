@@ -1,21 +1,16 @@
-import React, { useState } from "react";
+import React  from "react";
 import { SvgIcon } from "../SvgIcon";
 import styles from "./styles.module.scss";
 
 type SwitchProps = {
+  value: boolean;
   onChangeHandler: ()=>void;
 }
 
-export const Switch = ({onChangeHandler}: SwitchProps) => {
-  const [checked, setChecked] = useState<boolean>(false);
-
-  const switchHandler = () => {
-    setChecked((prev) => !prev);
-    onChangeHandler()
-  };
+export const Switch = ({onChangeHandler, value}: SwitchProps) => {
 
   return (
-    <div className={styles.switch} onClick={switchHandler}>
+    <div className={styles.switch} onClick={onChangeHandler}>
       <div className={styles.switchTexts}>
         <div className={styles.switchItem}>
           <div>
@@ -34,8 +29,8 @@ export const Switch = ({onChangeHandler}: SwitchProps) => {
       <input
         type="checkbox"
         className={styles.switchInput}
-        onChange={switchHandler}
-        checked={checked}
+        onChange={onChangeHandler}
+        checked={value}
       />
 
       <span className={styles.switchSlider}>

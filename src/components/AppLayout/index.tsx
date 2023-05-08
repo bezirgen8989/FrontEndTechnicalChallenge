@@ -29,8 +29,9 @@ export const AppLayout = ({ children }: AppLayoutProps) => {
     tootleMenuHandlerOpen,
     tootleMenuHandlerClose,
     screenType,
+    theme,
   } = useContext(AppContext);
-  const [darkTheme, setDarkTheme] = useState<boolean | undefined>(undefined);
+  // const [darkTheme, setDarkTheme] = useState<boolean | undefined>(undefined);
   const [startX, setStartX] = useState<number | null>(null);
 
   const swipeRightHandler = () => {
@@ -75,23 +76,6 @@ export const AppLayout = ({ children }: AppLayoutProps) => {
       setStartX(null);
     }
   };
-
-  const themeHandler = ()=>{
-    setDarkTheme(prevState => !prevState);
-  }
-  useEffect(() => {
-    if (darkTheme !== undefined) {
-      if (darkTheme) {
-        // Set value of  darkmode to dark
-        document.documentElement.setAttribute('data-theme', 'dark');
-        window.localStorage.setItem('theme', 'dark');
-      } else {
-        // Set value of  darkmode to light
-        document.documentElement.removeAttribute('data-theme');
-        window.localStorage.setItem('theme', 'light');
-      }
-    }
-  }, [darkTheme]);
 
   const currentRoute = router.asPath
     .split("/")
@@ -146,7 +130,7 @@ export const AppLayout = ({ children }: AppLayoutProps) => {
               : "-99%",
         }}
       >
-        <Header isDarkTheme={darkTheme}/>
+        <Header isDarkTheme={theme.themeValue}/>
         <div className={styles.navigationContainer}>
           {navigationLinks.map((item) => (
             <div
@@ -160,7 +144,7 @@ export const AppLayout = ({ children }: AppLayoutProps) => {
               <div className={styles.iconContainer}>
                 <SvgIcon
                   name={
-                    currentNavLinkItem?.href !== item.href && !darkTheme
+                    currentNavLinkItem?.href !== item.href && !theme.themeValue
                       ? (item.iconType as IconName)
                       : (`${item.iconType}_active` as IconName)
                   }
@@ -196,7 +180,7 @@ export const AppLayout = ({ children }: AppLayoutProps) => {
           </div>
 
           <div>
-            <Switch onChangeHandler={themeHandler} />
+            <Switch onChangeHandler={theme.setThemeValue} value={theme.themeValue} />
           </div>
         </div>
       </nav>
