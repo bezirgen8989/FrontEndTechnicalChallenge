@@ -104,6 +104,7 @@
       line-height: 27px;
       margin: 0;
       padding: 0 0 12px;
+      color: var(--header-text-color);
     }
     & > p{
       font-family: $inter-400;
@@ -111,6 +112,7 @@
       line-height: 170%;
       padding: 0;
       margin: 0;
+      color: var(--text-text-color);
     }
   }
   & > .arrowsBtnContainer{
