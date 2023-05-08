@@ -6,7 +6,7 @@ const Breadcrumbs = () => {
   const router = useRouter();
   const pathSegments = router.asPath.split('/').filter(segment => segment !== '' && segment !== "app");
 
-  const breadCrumbsNames = {
+  const breadCrumbsNames: { [key: string]: string }  = {
     overview: "Overview",
     projects: "Projects",
     events: "Events",

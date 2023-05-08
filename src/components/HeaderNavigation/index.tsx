@@ -4,7 +4,7 @@ import {useRouter} from "next/router";
 import {LinksWithQuery} from "@/types/types";
 
 type HeaderNavigation = {
-  headerNavigators?: LinksWithQuery[];
+  headerNavigators: LinksWithQuery[] | null;
 };
 
 export const HeaderNavigation = ({headerNavigators}: HeaderNavigation) => {

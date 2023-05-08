@@ -1,6 +1,6 @@
 import {LinksWithQuery, rolesType} from "@/types/types";
 import {createContext, ReactElement, useEffect, useState} from "react";
-import {web3, roles} from "@/Context/db";
+import {roles, web3} from "@/Context/db";
 
 type AppContextProps = {
   tootleMenu?: boolean;
@@ -9,13 +9,8 @@ type AppContextProps = {
   screenType: string;
   roles: rolesType[];
   appContainerHeaderLinks: {
-    web3: LinksWithQuery[] | null
-    teams: LinksWithQuery[] | null
-    analytics: LinksWithQuery[] | null
-    ecosystem: LinksWithQuery[] | null
-    dashboard: LinksWithQuery[] | null
-    nodes: LinksWithQuery[] | null
-  } | null,
+    [key: string]: LinksWithQuery[] | null;
+  },
   theme: {
     themeValue: boolean;
     setThemeValue: () => void
@@ -30,7 +25,14 @@ export const AppContext = createContext<AppContextProps>({
   tootleMenuHandlerClose: () => {
   },
   roles: [],
-  appContainerHeaderLinks: null,
+  appContainerHeaderLinks: {
+    web3: null,
+    teams: null,
+    analytics: null,
+    ecosystem: null,
+    dashboard: null,
+    nodes: null,
+  },
   theme: {
     themeValue: false,
     setThemeValue: () => {

@@ -10,6 +10,7 @@ import {AppContext} from "@/Context";
 import testUserAvatar from "../../assets/images/testImage.png";
 import {HeaderNavigation} from "@/components/HeaderNavigation";
 import Breadcrumbs from "@/components/BreadCrumbs";
+import {LinksWithQuery} from "@/types/types";
 
 type AppLayoutProps = {
   children?: ReactElement;
@@ -93,8 +94,6 @@ export const AppLayout = ({children}: AppLayoutProps) => {
     {linkName: "Teams", href: "/app/teams", iconType: "teams"},
     {linkName: "Discover Web3", href: "/app/web3", iconType: "web3"},
   ];
-
-
 
   const currentNavLinkItem = navigationLinks.find(
     (item) => item.href === `/app/${currentRoute}`
@@ -213,8 +212,7 @@ export const AppLayout = ({children}: AppLayoutProps) => {
         </header>
         <div className={styles.childrenContent}>
           {
-            appContainerHeaderLinks && appContainerHeaderLinks[currentAppRoute]
-            && <HeaderNavigation headerNavigators={appContainerHeaderLinks[currentAppRoute]}/>
+            appContainerHeaderLinks && <HeaderNavigation headerNavigators={appContainerHeaderLinks[currentAppRoute]}/>
           }
           {children}
         </div>
