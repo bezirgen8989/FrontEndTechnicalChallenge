@@ -99,13 +99,12 @@ export const AppLayout = ({children}: AppLayoutProps) => {
   );
 
   const logout = () => {
-    for (let i = 0; i < localStorage.length; i++) {
-      const key = localStorage.key(i);
-      if (key && key !== "theme") {
-        localStorage.removeItem(key);
-      }
+    const theme = localStorage.getItem('theme');
+    localStorage.clear();
+    if (theme) {
+      localStorage.setItem('theme', theme);
     }
-    router.push("/");
+    router.push('/');
   };
 
   useEffect(() => {
