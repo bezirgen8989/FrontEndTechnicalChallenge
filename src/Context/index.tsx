@@ -1,28 +1,21 @@
 import {LinksWithQuery, rolesType} from "@/types/types";
 import {createContext, ReactElement, useEffect, useState} from "react";
-import {discoverWeb3HeaderNavigators, discoverWeb3LinksContent, roles} from "@/Context/db";
-import {lock} from "next/dist/client/components/react-dev-overlay/internal/components/Overlay/body-locker";
-
-type DiscoverWeb3Links = {
-  id: string;
-  data: {
-    title: string;
-    description: string;
-    steps?: {
-      question: string;
-      variants: string[];
-    }[];
-  };
-};
+import {web3, roles} from "@/Context/db";
 
 type AppContextProps = {
   tootleMenu?: boolean;
   tootleMenuHandlerOpen: () => void;
   tootleMenuHandlerClose: () => void;
   screenType: string;
-  discoverWeb3HeaderNavigators: LinksWithQuery[];
-  discoverWeb3LinksContent: DiscoverWeb3Links[];
   roles: rolesType[];
+  appContainerHeaderLinks: {
+    web3: LinksWithQuery[] | null
+    teams: LinksWithQuery[] | null
+    analytics: LinksWithQuery[] | null
+    ecosystem: LinksWithQuery[] | null
+    dashboard: LinksWithQuery[] | null
+    nodes: LinksWithQuery[] | null
+  } | null,
   theme: {
     themeValue: boolean;
     setThemeValue: () => void
@@ -36,9 +29,8 @@ export const AppContext = createContext<AppContextProps>({
   },
   tootleMenuHandlerClose: () => {
   },
-  discoverWeb3HeaderNavigators: [],
-  discoverWeb3LinksContent: [],
   roles: [],
+  appContainerHeaderLinks: null,
   theme: {
     themeValue: false,
     setThemeValue: () => {
@@ -50,6 +42,15 @@ export const AppProvider = ({children}: { children: ReactElement }) => {
   const [isMenuInScreen, setIsMenuInScreen] = useState<boolean>(false);
   const [screenSize, setScreenSize] = useState<string>("");
   const [themeValue, setThemeValue] = useState<boolean>(false);
+
+  const appContainerHeaderLinks = {
+    web3,
+    teams: null,
+    analytics: null,
+    ecosystem: null,
+    dashboard: null,
+    nodes: null,
+  }
 
   const tootleMenuHandlerOpen = () => {
     setIsMenuInScreen(true);
@@ -69,8 +70,6 @@ export const AppProvider = ({children}: { children: ReactElement }) => {
     const selectedTheme = localStorage.getItem("theme");
     const isDarkMode = selectedTheme === 'dark';
 
-    screen.orientation?.lock("landscape")
-
     if (selectedTheme != null) {
       document.documentElement.setAttribute('data-theme', selectedTheme);
     }
@@ -80,7 +79,6 @@ export const AppProvider = ({children}: { children: ReactElement }) => {
     const resizeHandler = () => {
       if (window.innerWidth > 600 && window.innerWidth < 767) {
         setScreenSize("mobile");
-
       }
       if (window.innerWidth > 768 && window.innerWidth < 1024) {
         setScreenSize("tablet");
@@ -91,7 +89,7 @@ export const AppProvider = ({children}: { children: ReactElement }) => {
     }
 
     window.addEventListener("resize", resizeHandler);
-    return()=> window.removeEventListener("resize", resizeHandler)
+    return () => window.removeEventListener("resize", resizeHandler)
   }, []);
 
   return (
@@ -101,9 +99,8 @@ export const AppProvider = ({children}: { children: ReactElement }) => {
         tootleMenuHandlerOpen,
         tootleMenuHandlerClose,
         screenType: screenSize,
-        discoverWeb3HeaderNavigators,
-        discoverWeb3LinksContent,
         roles,
+        appContainerHeaderLinks,
         theme: {
           themeValue,
           setThemeValue: themeHandler,

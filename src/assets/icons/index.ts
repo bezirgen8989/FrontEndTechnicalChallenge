@@ -28,5 +28,5 @@ export { default as analytics_active } from "./analytics_active.svg";
 export { default as ecosystem } from "./ecosystem.svg";
 export { default as ecosystem_active } from "./ecosystem_active.svg";
 
-export { default as discover } from "./discover.svg";
-export { default as discover_active } from "./discover_active.svg";
+export { default as web3 } from "./web3.svg";
+export { default as web3_active } from "./web3_active.svg";

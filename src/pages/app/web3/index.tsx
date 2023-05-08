@@ -6,10 +6,7 @@ const Discover = () => {
   const router = useRouter();
 
   useEffect(() => {
-    router.push({
-      pathname: "./discover/overview",
-      query: { headerCurrentLink: "overview" },
-    });
+    router.push("./web3/overview");
   }, [router]);
 
   return (

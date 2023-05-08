@@ -1,31 +1,31 @@
-export const discoverWeb3HeaderNavigators = [
+export const web3 = [
   {
-    href: "/app/discover/overview",
+    href: "/app/web3/overview",
     linkName: "Overview",
     query: { headerCurrentLink: "overview" },
   },
   {
-    href: "/app/discover/projects",
+    href: "/app/web3/projects",
     linkName: "Projects",
     query: { headerCurrentLink: "projects" },
   },
   {
-    href: "/app/discover/events",
+    href: "/app/web3/events",
     linkName: "Events",
     query: { headerCurrentLink: "events" },
   },
   {
-    href: "/app/discover/news",
+    href: "/app/web3/news",
     linkName: "News",
     query: { headerCurrentLink: "news" },
   },
   {
-    href: "/app/discover/developer",
+    href: "/app/web3/developer",
     linkName: "Developer Toolkit",
     query: { headerCurrentLink: "developer" },
   },
   {
-    href: "/app/discover/entrepreneur",
+    href: "/app/web3/entrepreneur",
     linkName: "Entrepreneur Toolkit",
     query: { headerCurrentLink: "entrepreneur" },
   },
@@ -47,21 +47,5 @@ export const roles = [
       "For companies and institutions who need access to our suite of tools and real-time insights to manage and run their operations.",
     icon: "business",
     status: false,
-  },
-];
-
-export const discoverWeb3LinksContent = [
-  { id: "overview", data: { title: "Overview", description: "" } },
-  { id: "projects", data: { title: "Projects", description: "" } },
-  { id: "events", data: { title: "Events", description: "" } },
-  { id: "news", data: { title: "News", description: "" } },
-  { id: "developer", data: { title: "Developer", description: "" } },
-  {
-    id: "entrepreneur",
-    data: {
-      title: "Setup Guide",
-      description:
-        "Unlock your highest potential with our personalized guide!",
-    },
   },
 ];

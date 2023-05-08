@@ -1,0 +1,29 @@
+@import "../../styles/variables.scss";
+
+.breadCrumbsContainer{
+  margin: 0;
+  padding: 0;
+  .breadCrumbs {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    padding-left: 2px;
+    list-style-type: none;
+
+
+    & > h2 {
+      font-family: $inter-600;
+      font-size: 20px;
+      line-height: 24px;
+      color: var(--header-text-color);
+      margin: 0;
+
+    }
+
+    & > li > a{
+      color: var(--link-text-color);
+      text-decoration: none;
+      font-size: 12px;
+    }
+  }
+}

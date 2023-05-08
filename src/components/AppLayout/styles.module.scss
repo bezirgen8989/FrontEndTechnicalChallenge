@@ -1,5 +1,10 @@
 @import "../../styles/variables.scss";
 
+.childrenContent{
+  &>h1{
+    color: var(--header-text-color);
+  }
+}
 .appContainer {
   background-color: var(--color-background);
   width: 100%;

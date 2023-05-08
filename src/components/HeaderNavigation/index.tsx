@@ -1,13 +1,13 @@
 import Link from "next/link";
 import styles from "./style.module.scss";
-import { useRouter } from "next/router";
-import { LinksWithQuery } from "@/types/types";
+import {useRouter} from "next/router";
+import {LinksWithQuery} from "@/types/types";
 
 type HeaderNavigation = {
   headerNavigators?: LinksWithQuery[];
 };
 
-export const HeaderNavigation = ({ headerNavigators }: HeaderNavigation) => {
+export const HeaderNavigation = ({headerNavigators}: HeaderNavigation) => {
   const router = useRouter();
   const handleTouchStart = (e: React.TouchEvent) => {
     e.stopPropagation();
@@ -15,12 +15,6 @@ export const HeaderNavigation = ({ headerNavigators }: HeaderNavigation) => {
 
   const handleTouchEnd = (e: React.TouchEvent) => {
     e.stopPropagation();
-  };
-
-  const getHeaderCurrentLink = () => {
-    return typeof router.query.headerCurrentLink === "string"
-      ? router.query.headerCurrentLink
-      : "";
   };
 
   return (
@@ -33,15 +27,12 @@ export const HeaderNavigation = ({ headerNavigators }: HeaderNavigation) => {
         {headerNavigators?.map((item) => (
           <Link
             key={item.href}
-            href={{
-              pathname: item.href,
-              query: item.query,
-            }}
+            href={item.href}
           >
             {item.linkName}
             <span
               className={`${
-                item.href.includes(getHeaderCurrentLink()) && styles.active
+                item.href === router.pathname && styles.active
               }`}
             />
           </Link>

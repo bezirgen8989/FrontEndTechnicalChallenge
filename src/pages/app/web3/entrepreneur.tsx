@@ -1,9 +1,7 @@
 import Head from "next/head";
-import styles from "../../../styles/discover.module.scss";
-import {HeaderNavigation} from "@/components/HeaderNavigation";
-import {useContext, useState} from "react";
+import styles from "../../../styles/entrepreneur.module.scss";
+import {useState} from "react";
 import {Button} from "@/components/Button";
-import {AppContext} from "@/Context";
 import {GetStaticProps} from "next";
 
 type ContentProps = {
@@ -12,7 +10,6 @@ type ContentProps = {
 };
 
 const Entrepreneur = ({entrepreneurQuestions}: ContentProps) => {
-  const {discoverWeb3HeaderNavigators} = useContext(AppContext);
   const [currentQuestion, setCurrentQuestion] = useState<number>(0);
   const [selectedAnswer, setSelectedAnswer] = useState<string>("");
   const [formAnswers, setFormAnswers] = useState<string[]>([]);
@@ -31,7 +28,6 @@ const Entrepreneur = ({entrepreneurQuestions}: ContentProps) => {
     const questionsLength = entrepreneurQuestions.length - 1;
 
     if (questionsLength > currentQuestion && selectedAnswer) {
-      // debugger;
       setFormAnswers((prev) => [...prev, selectedAnswer]);
       setCurrentQuestion((prev) => prev + 1);
       setSelectedAnswer("");
@@ -76,7 +72,6 @@ const Entrepreneur = ({entrepreneurQuestions}: ContentProps) => {
       </Head>
 
       <main className={styles.entrepreneurContainer}>
-        <HeaderNavigation headerNavigators={discoverWeb3HeaderNavigators}/>
         <section className={styles.sectionContainer}>
           {entrepreneurQuestions && (
             <div className={styles.sectionBlocks}>
