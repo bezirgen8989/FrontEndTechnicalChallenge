@@ -134,7 +134,7 @@ const Entrepreneur = ({entrepreneurQuestions}: ContentProps) => {
                                       value={variant}
                                       id={variant}
                                     />
-                                    <span className={selectedAnswer === variant ? styles.active : null}/>
+                                    <span className={selectedAnswer === variant ? styles.active : ""}/>
                                   </div>
                                   {variant}
                                 </label>
