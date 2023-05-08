@@ -3,15 +3,16 @@
 .selectRoleContainer {
   display: flex;
   height: 100vh;
-  
+
   .rolesContainer {
     display: flex;
     flex-direction: column;
     background: $white-color;
     height: 100%;
     min-height: 100vh;
-    width: 50%;
-    @media(min-width: 374px) and (max-width: 767px) and (orientation: portrait) {
+    width: 100%;
+
+    @media(min-width: 300px) and (orientation: portrait) {
       width: 100%;
     }
 
@@ -33,7 +34,10 @@
         (max-width: 1279px) and (orientation: landscape) {
           width: 40vw;
         }
-        
+        @media(min-width: 290px) and  (max-width: 800px){
+          width: 95%;
+        }
+
         @media(min-width: 1960px) {
           width: 17vw;
         }
@@ -63,7 +67,7 @@
         }
       }
       & > footer{
-        @media(min-width: 374px) and (max-width: 767px) and (orientation: portrait) {
+        @media(min-width: 174px) and (max-width: 375px) and (orientation: portrait) {
           position: relative;
         }
       }
@@ -71,11 +75,11 @@
   }
   & > .rightSideBlock{
     height: 100%;
-    width: 50%;
+    width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
-    @media(min-width: 300px) and (max-width: 767px) and (orientation: portrait) {
+    @media(min-width: 100px) and (max-width: 767px) and (orientation: portrait) {
       display: none;
     }
   }
@@ -87,15 +91,19 @@
   display: flex;
   align-items: center;
   height: 100px;
+  @media(max-width: 1024px) and (orientation: portrait),
+  (max-width: 1279px) and (orientation: landscape) {
+    align-items: initial;
+    padding-left: 40px;
+  }
   & > .descriptionBlock{
     padding-right: 47px;
     & > h1{
       font-family: $inter-600;
       font-size: 22px;
       line-height: 27px;
-      padding: 0;
       margin: 0;
-      padding-bottom: 12px;
+      padding: 0 0 12px;
     }
     & > p{
       font-family: $inter-400;

@@ -1,6 +1,7 @@
 import {LinksWithQuery, rolesType} from "@/types/types";
 import {createContext, ReactElement, useEffect, useState} from "react";
 import {discoverWeb3HeaderNavigators, discoverWeb3LinksContent, roles} from "@/Context/db";
+import {lock} from "next/dist/client/components/react-dev-overlay/internal/components/Overlay/body-locker";
 
 type DiscoverWeb3Links = {
   id: string;
@@ -68,6 +69,8 @@ export const AppProvider = ({children}: { children: ReactElement }) => {
     const selectedTheme = localStorage.getItem("theme");
     const isDarkMode = selectedTheme === 'dark';
 
+    screen.orientation?.lock("landscape")
+
     if (selectedTheme != null) {
       document.documentElement.setAttribute('data-theme', selectedTheme);
     }
@@ -76,6 +79,7 @@ export const AppProvider = ({children}: { children: ReactElement }) => {
     window.addEventListener("resize", () => {
       if (window.innerWidth > 600 && window.innerWidth < 767) {
         setScreenSize("mobile");
+
       }
       if (window.innerWidth > 768 && window.innerWidth < 1024) {
         setScreenSize("tablet");

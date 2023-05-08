@@ -133,8 +133,10 @@ export const AppLayout = ({ children }: AppLayoutProps) => {
         <Header isDarkTheme={theme.themeValue}/>
         <div className={styles.navigationContainer}>
           {navigationLinks.map((item) => (
-            <div
+            <Link
+              href={`${item.href}`}
               key={item.linkName}
+              onClick={tootleMenuHandlerClose}
               className={`${styles.navigationLink} ${
                 currentNavLinkItem?.href === item.href
                   ? styles.activeLink
@@ -150,10 +152,8 @@ export const AppLayout = ({ children }: AppLayoutProps) => {
                   }
                 />
               </div>
-              <Link href={`${item.href}`} onClick={tootleMenuHandlerClose}>
-                {item.linkName}
-              </Link>
-            </div>
+              <span>{item.linkName}</span>
+            </Link>
           ))}
         </div>
 

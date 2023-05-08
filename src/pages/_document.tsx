@@ -27,20 +27,25 @@ function setInitialColorMode() {
   // Check initial color preference
   function getInitialColorMode() {
     const persistedPreferenceMode = window.localStorage.getItem('theme');
-    const hasPersistedPreference = typeof persistedPreferenceMode === 'string';
-    if (hasPersistedPreference) {
+    if(persistedPreferenceMode){
       return persistedPreferenceMode;
+    }else{
+      return "light";
     }
+    // const hasPersistedPreference = typeof persistedPreferenceMode === 'string';
+    // if (hasPersistedPreference) {
+    //   return persistedPreferenceMode;
+    // }
+    //
+    // // Check the current preference
+    // const preference = window.matchMedia('(prefers-color-scheme: light)');
+    // const hasMediaQueryPreference = true;
 
-    // Check the current preference
-    const preference = window.matchMedia('(prefers-color-scheme: light)');
-    const hasMediaQueryPreference = true;
-
-    if (hasMediaQueryPreference) {
-      return preference.matches ? 'dark' : 'light';
-    }
-
-    return 'light';
+    // if (hasMediaQueryPreference) {
+    //   return preference.matches ? 'light' : 'dark';
+    // }
+    //
+    // return 'light';
   }
 
   const currentColorMode = getInitialColorMode();

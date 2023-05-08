@@ -54,7 +54,7 @@ const Entrepreneur = ({entrepreneurQuestions}: ContentProps) => {
         setFormValidationMsg(message);
       }
     } else {
-      setFormValidationMsg("Please select answer");
+      setFormValidationMsg("Please select an answer");
     }
   };
 
@@ -126,23 +126,16 @@ const Entrepreneur = ({entrepreneurQuestions}: ContentProps) => {
                           {entrepreneurQuestions[currentQuestion]?.variants.map(
                             (variant: string, id: number) => (
                               <div key={id} className={styles.formItems}>
-                                <div className={styles.radio}>
-                                  <input
-                                    type="radio"
-                                    name={"answer"}
-                                    value={variant}
-                                    id={variant}
-                                  />
-                                  <span
-                                    className={
-                                      selectedAnswer === variant
-                                        ? styles.active
-                                        : ""
-                                    }
-                                  />
-                                </div>
-
-                                <label className={styles.radioLabel}>
+                                <label className={styles.radioLabel} onClick={formOnChangeHandler}>
+                                  <div className={styles.radio}>
+                                    <input
+                                      type="radio"
+                                      name={"answer"}
+                                      value={variant}
+                                      id={variant}
+                                    />
+                                    <span className={selectedAnswer === variant ? styles.active : null}/>
+                                  </div>
                                   {variant}
                                 </label>
                               </div>
