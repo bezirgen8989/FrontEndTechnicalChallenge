@@ -30,9 +30,13 @@
 
     & > .iconInto {
       position: absolute;
-      top: 0.61rem;
+      top: 0;
       right: 15px;
       cursor: pointer;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
 
     & > input {
